@@ -1,6 +1,10 @@
-<% if flash[:group_creation_errors] %>
-  <%= flash[:group_creation_errors] %>
-<% end %>
+<p><%= link_to "Back", groups_path %></p>
+
+<p>
+  <% if flash[:group_creation_errors] %>
+    <%= flash[:group_creation_errors] %>
+  <% end %>
+</p>
 
 <%= form_for Group.new do |f| %>
   <%= f.label :name %>
