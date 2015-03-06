@@ -1,14 +1,25 @@
-var connection = new WebSocket("ws://localhost:8080");
+var connection;
 
-connection.onopen = function() {
-  data = {
-    type: "connect",
-    group_id: <%= @group.id %>
-  };
-  connection.send(JSON.stringify(data));
+function setup() {
+  connection = new WebSocket("ws://localhost:8080");
+
+  connection.onopen = function() {
+    var data = {
+      type: "connect",
+      group_id: <%= @group.id %>
+    };
+    connection.send(JSON.stringify(data));
+  }
+
+  connection.onmessage = function(event) {
+    console.log(event.data);
+  }
+
+  connection.onclose = function() {
+    setTimeout(function() {
+      setup();
+    }, 1000);
+  }
 }
 
-data {
-  type: "message",
-
-}
+setup();
