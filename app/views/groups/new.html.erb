@@ -1,2 +1,10 @@
-<h1>Groups#new</h1>
-<p>Find me in app/views/groups/new.html.erb</p>
+<% if flash[:group_creation_errors] %>
+  <%= flash[:group_creation_errors] %>
+<% end %>
+
+<%= form_for Group.new do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit %>
+<% end %>
