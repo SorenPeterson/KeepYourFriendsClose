@@ -2,3 +2,5 @@
 <% (@groups ||= []).each do |group| %>
   <%= link_to group.name, url_for(group) %>
 <% end %>
+
+<%= current_user.facebook.get_connections("me", "friends").size %>

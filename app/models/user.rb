@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
 
     user
   end
+
+  def facebook
+    @facebook ||= Koala::Facebook::API.new(self.oauth_token, ENV["FB_AUTH_CLIENT_SECRET"])
+  end
 end
