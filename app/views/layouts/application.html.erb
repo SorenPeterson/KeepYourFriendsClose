@@ -8,12 +8,14 @@
 </head>
 <body>
 
-<% if current_user %>
-  Signed in as <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-<% end %>
+<div class="container">
+  <% if current_user %>
+    Signed in as <strong><%= current_user.name %></strong>!
+      <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  <% end %>
 
-<%= yield %>
+  <%= yield %>
+</div>
 
 </body>
 </html>
