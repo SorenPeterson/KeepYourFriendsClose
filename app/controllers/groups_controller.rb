@@ -30,6 +30,11 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @group = Group.find(params[:id])
+    @users = @group.users
+    unless (@users.find_by(id: current_user.id))
+      redirect_to groups_path
+    end
   end
 
 private

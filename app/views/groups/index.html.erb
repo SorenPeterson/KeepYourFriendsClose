@@ -1,4 +1,4 @@
 <%= link_to "New Group", new_group_path %>
 <% (@groups ||= []).each do |group| %>
-  <%= group.name %>
+  <%= link_to group.name, url_for(group) %>
 <% end %>
