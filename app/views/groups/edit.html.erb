@@ -22,10 +22,6 @@
       type: "post",
       url: "/groups/<%= @group.id %>/invitations",
       data: $(this).serialize()
-    }).success(function(response) {
-      $("#user-list").append("<li>" + $("input[name=name]").val());
-    }).fail(function() {
-      // Display error message
     })
   })
 </script>
