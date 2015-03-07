@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150306045442) do
+ActiveRecord::Schema.define(version: 20150307011253) do
 
   create_table "groups", force: :cascade do |t|
     t.integer  "user_id"
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 20150306045442) do
     t.datetime "oauth_expires_at"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "latitude"
+    t.integer  "longitude"
   end
 
 end
