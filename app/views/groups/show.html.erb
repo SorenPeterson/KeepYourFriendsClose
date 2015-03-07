@@ -19,7 +19,8 @@
 </script>
 
 
-<div id="map-canvas"></div>
+<div id="map-canvas" data-group-id= "<%=@group.id%>", data-user-id= "<%=current_user.id%>">
+</div>
 
 <script>
   <%= render "map.js" %>
