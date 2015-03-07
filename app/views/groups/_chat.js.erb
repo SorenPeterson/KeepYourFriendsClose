@@ -36,8 +36,10 @@ $(document).ready(function() {
 
     message = {
       type: "message",
-      message: "hi"
+      message: $("input[name=message]").val()
     }
+
+    $("input[name=message]").val("");
 
     message = JSON.stringify(message);
 
