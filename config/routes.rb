@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   resources :groups do
-    resources :users
+    resources :users do
+    end
+    resources :invitations
   end
+
+  resources :invitations
+  delete '/groups/:group_id/invitations/:id/accept', to: 'invitations#accept'
+  delete '/groups/:group_id/invitations/:id/decline', to: 'invitations#decline'
 
   root 'welcome#index'
 
