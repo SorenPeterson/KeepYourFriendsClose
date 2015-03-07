@@ -19,8 +19,8 @@
     e.preventDefault();
 
     $.ajax({
-      type: "put",
-      url: "/groups/<%= @group.id %>",
+      type: "post",
+      url: "/groups/<%= @group.id %>/users",
       data: $(this).serialize()
     }).success(function(response) {
       // Add user to list
