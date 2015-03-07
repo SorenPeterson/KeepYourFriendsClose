@@ -1,7 +1,11 @@
-<p><%= link_to "New Group", new_group_path %></p>
+<button id="new-group-link"><p><%= link_to "New Group", new_group_path %></p></button>
 
-<ul>
-  <% (@groups ||= []).each do |group| %>
+<div id="group-list">
+  <!-- <ul> -->
+    <% (@groups ||= []).each do |group| %>
+    <div class="group-name">
     <li><%= link_to group.name, url_for(group) %></li>
-  <% end %>
-</ul>
+    </div>
+    <% end %>
+  <!-- </ul> -->
+</div>

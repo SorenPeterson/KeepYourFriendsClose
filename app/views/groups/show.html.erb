@@ -1,5 +1,10 @@
-<%= link_to "Back", groups_path %>
-<%= link_to "Edit", edit_group_path %>
+<div id="chat-map-choice">
+  <div class="choose">Chat</div>
+  <div class="choose">Map</div>
+</div>
+
+<button><p><%= link_to "Back", groups_path %>
+<%= link_to "Edit", edit_group_path %></p></button>
 
 <ul id="user-list">
   <% @users.each do |user| %>
@@ -26,3 +31,4 @@
 <script>
   <%= render "map.js" %>
 </script>
+

@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 20150307021521) do
     t.datetime "oauth_expires_at"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.float  "latitude"
-    t.float  "longitude"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
 end

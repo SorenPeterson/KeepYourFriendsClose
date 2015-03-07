@@ -1,3 +1,42 @@
-// Place all the styles related to the Welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  padding: 0;
+}
+
+.container {
+  max-width: 100%;
+  margin: auto;
+}
+
+/*nav bar when logged in*/
+.nav {
+  text-align: right;
+  height: 175px;
+  background-color: #7DBDFF;
+  padding: 25px;
+}
+/*logo in the corner of the navbar*/
+#logo {
+  text-align: left;
+  color: #001F5C;
+  font-size: 75px;
+  font-family: 'Pontano Sans', sans-serif;
+}
+
+#user_login {
+  margin-top: 50%;
+  text-align: center;
+  padding: 100px;
+  background-color: #7DBDFF;
+}
+
+#title {
+  color: white;
+  font-size: 75px;
+  font-family: 'Pontano Sans', sans-serif;
+}
+
+#user_login a {
+  color: white;
+  font-size: 40px;
+  font-family: 'Pontano Sans', sans-serif;
+}

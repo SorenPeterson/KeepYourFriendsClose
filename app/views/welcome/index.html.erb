@@ -1,5 +1,8 @@
+
+
 <div id="user_login">
   <% unless current_user %>
+  <span id="title">Keep Your Friends Close</span></br></br>
     <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
 </div>
