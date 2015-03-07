@@ -1,23 +1,20 @@
 <div id="chat-map-choice">
-  <div class="choose">Chat</div>
-  <div class="choose">Map</div>
+  <div class="choose" id="chat-link">Chat</div>
+  <div class="choose" id="map-link">Map</div>
 </div>
 
 <button><p><%= link_to "Back", groups_path %>
 <%= link_to "Edit", edit_group_path %></p></button>
 
-<ul id="user-list">
-  <% @users.each do |user| %>
-    <li><%= user.name %></li>
-  <% end %>
-</ul>
 
-<form id="chat-input">
-  <input type="text" name="message">
-  <input type="submit" name="send-message" value="Send">
-</form>
+<div id="chat-canvas">
+  <form id="chat-input">
+    <input type="text" name="message">
+    <input type="submit" name="send-message" value="Send">
+  </form>
 
-<div id="chat-box">
+  <div id="chat-box">
+  </div>
 </div>
 
 <script>
@@ -32,3 +29,9 @@
   <%= render "map.js" %>
 </script>
 
+
+<ul id="user-list">
+  <% @users.each do |user| %>
+    <li><%= user.name %></li>
+  <% end %>
+</ul>

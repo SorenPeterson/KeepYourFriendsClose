@@ -49,7 +49,23 @@ button {
   font-size: 30px;
 }
 
+/*MAP & CHAT*/
+
+#chat-canvas {
+  display: none;
+  height: 500px;
+  width: 500px;
+  margin: auto;
+  padding: 0;
+  border: 5px solid black;
+}
+
+#chat-input {
+  margin: auto;
+}
+
 #map-canvas {
+  display: none;
   height: 500px;
   width: 500px;
   margin: auto;
