@@ -12,7 +12,7 @@ function setup() {
   }
 
   connection.onmessage = function(event) {
-    console.log(event.data);
+    addMessage(event.data);
   }
 
   connection.onclose = function() {
@@ -22,4 +22,25 @@ function setup() {
   }
 }
 
-setup();
+function addMessage(msg) {
+  var p = "<p>"
+  chatBox.prepend(p + msg);
+}
+
+$(document).ready(function() {
+  setup();
+  chatBox = $("#chat-box");
+
+  $("#chat-input").on("submit", function(e) {
+    e.preventDefault();
+
+    message = {
+      type: "message",
+      message: "hi"
+    }
+
+    message = JSON.stringify(message);
+
+    connection.send(message);
+  });
+})

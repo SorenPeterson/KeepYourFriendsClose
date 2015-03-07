@@ -6,6 +6,14 @@
   <% end %>
 </ul>
 
+<form id="chat-input">
+  <input type="text" name="message">
+  <input type="submit" name="send-message">
+</form>
+
+<div id="chat-box">
+</div>
+
 <script>
   <%= render "chat.js" %>
 </script>
