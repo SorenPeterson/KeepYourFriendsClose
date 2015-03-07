@@ -1,0 +1,31 @@
+<form id="add-user">
+  <input type="text" name="name">
+  <input type="submit" value="Add User">
+</form>
+
+<ul>
+  <% @users.each do |user| %>
+    <li><%= user.name %></li>
+  <% end %>
+</ul>
+
+<script>
+  var users = <%= User.pluck(:name).to_json.html_safe %>
+  $("input[name=name]").autocomplete({
+    source: users
+  });
+
+  $("#add-user").on("submit", function(e) {
+    e.preventDefault();
+
+    $.ajax({
+      type: "put",
+      url: "/groups/<%= @group.id %>",
+      data: $(this).serialize()
+    }).success(function(response) {
+      // Add user to list
+    }).fail(function() {
+      // Display error message
+    })
+  })
+</script>
