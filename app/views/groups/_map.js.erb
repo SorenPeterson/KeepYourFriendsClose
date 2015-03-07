@@ -5,20 +5,28 @@ function findme(){
 
 function initialize(location) {
   var currentlocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude)
+  updateCurrentUser();
+  updateGroupMarkers();
 
+// ajax call to update the current users location
+function updateCurrentUser(){
+  var latitude = location.coords.latitude
+  var longitude = location.coords.longitude
+  var group_id = $("#map-canvas").attr("data-group-id")
+  var user_id = $("#map-canvas").attr("data-user-id")
+  var location_hash = {latitude: latitude, longitude: longitude}
+  console.log(location_hash);
   $.ajax({
-    url:
+    url:"/groups/"+group_id+"/users/"+user_id,
     type: "get",
-    dataType: "json"
+    dataType: "json",
+    data: location_hash
+  }).done(function(){
+    console.log("in the done");
   })
+}
 
-
-// ajax call to update current users latitude and longitude
-
-// ajax call to get all latitude and longitude of users in group
-// create markers for each user on the same map
-
-  var mapOptions = {
+var mapOptions = {
     center: currentlocation, // or the average of the users locations
     zoom: 15,
   };
@@ -32,22 +40,42 @@ function initialize(location) {
     title: 'Ryan Urie'
   });
 
+// create markers for each user on the same map
+function updateGroupMarkers(){
+  var group_id = $("#map-canvas").attr("data-group-id")
+  $.ajax({
+    url: "/groups/"+group_id+"/users",
+    dataType: "json",
+    type: "get"
+  }).done(function(response){
+    console.log("ajax complete");
+    for (var i = 0; i < response.length; i++){
+      var marker = new google.maps.Marker({
+        position: new google.maps.LatLng(response[i].latitude, response[i].longitude),
+        map: map,
+        title: response[i].name
+      });
+    }
+  })
+}
 
-  function getupdatedlocation(){
-    console.log("updating location")
+function getupdatedlocation(){
+    // console.log("updating location")
     navigator.geolocation.getCurrentPosition(function(location){
       var newlocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude)
+
       // var newlocation = new google.maps.LatLng(37.7952, 122.4028)
-      // debugger;
       if ( newlocation.k != currentlocation.k || newlocation.D != currentlocation.D) {
         marker.setPosition(newlocation);
         map.panTo(newlocation)
+        updateCurrentUser();
         currentlocation = newlocation;
       }
     })
   }
 
   setInterval(getupdatedlocation, 3000)
+  setInterval(updateGroupMarkers, 3000)
 }
 
 
