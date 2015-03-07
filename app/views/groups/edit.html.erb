@@ -1,27 +1,29 @@
-<form id="add-user">
-  <input type="text" name="name">
-  <input type="submit" value="Add User">
-</form>
+<% if current_user.id == @group.admin.id %>
+  <form id="add-user">
+    <input type="text" name="name">
+    <input type="submit" value="Add User">
+  </form>
+
+  <script>
+    var users = <%= User.pluck(:name).to_json.html_safe %>
+    $("input[name=name]").autocomplete({
+      source: users
+    });
+
+    $("#add-user").on("submit", function(e) {
+      e.preventDefault();
+
+      $.ajax({
+        type: "post",
+        url: "/groups/<%= @group.id %>/invitations",
+        data: $(this).serialize()
+      })
+    })
+  </script>
+<% end %>
 
 <ul id="user-list">
   <% @users.each do |user| %>
     <li><%= user.name %></li>
   <% end %>
 </ul>
-
-<script>
-  var users = <%= User.pluck(:name).to_json.html_safe %>
-  $("input[name=name]").autocomplete({
-    source: users
-  });
-
-  $("#add-user").on("submit", function(e) {
-    e.preventDefault();
-
-    $.ajax({
-      type: "post",
-      url: "/groups/<%= @group.id %>/invitations",
-      data: $(this).serialize()
-    })
-  })
-</script>
