@@ -36,13 +36,15 @@ $(document).ready(function() {
 
     message = {
       type: "message",
-      message: $("input[name=message]").val()
+      message: "<%= current_user.name %>: " + $("input[name=message]").val() + " - <%= Time.now.ctime %>"
     }
-
-    $("input[name=message]").val("");
 
     message = JSON.stringify(message);
 
-    connection.send(message);
+    if($("input[name=message]").val()) {
+      connection.send(message);
+    }
+
+    $("input[name=message]").val("");
   });
 })

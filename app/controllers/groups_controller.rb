@@ -17,9 +17,18 @@ class GroupsController < ApplicationController
   end
 
   def update
+    @group = Group.find(params[:id])
+    @user = User.find_by(name: params["name"])
+    if @user
+      @group.users << @user
+    else
+      render inline: '', status: 400
+    end
   end
 
   def edit
+    @group = Group.find(params[:id])
+    @users = @group.users
   end
 
   def destroy
