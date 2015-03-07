@@ -1,0 +1,54 @@
+
+function findme(){
+  navigator.geolocation.getCurrentPosition(initialize)
+}
+
+function initialize(location) {
+  var currentlocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude)
+
+  $.ajax({
+    url:
+    type: "get",
+    dataType: "json"
+  })
+
+
+// ajax call to update current users latitude and longitude
+
+// ajax call to get all latitude and longitude of users in group
+// create markers for each user on the same map
+
+  var mapOptions = {
+    center: currentlocation, // or the average of the users locations
+    zoom: 15,
+  };
+
+  var map = new google.maps.Map(document.getElementById('map-canvas'),
+    mapOptions);
+
+  var marker = new google.maps.Marker({
+    position: currentlocation,
+    map: map,
+    title: 'Ryan Urie'
+  });
+
+
+  function getupdatedlocation(){
+    console.log("updating location")
+    navigator.geolocation.getCurrentPosition(function(location){
+      var newlocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude)
+      // var newlocation = new google.maps.LatLng(37.7952, 122.4028)
+      // debugger;
+      if ( newlocation.k != currentlocation.k || newlocation.D != currentlocation.D) {
+        marker.setPosition(newlocation);
+        map.panTo(newlocation)
+        currentlocation = newlocation;
+      }
+    })
+  }
+
+  setInterval(getupdatedlocation, 3000)
+}
+
+
+google.maps.event.addDomListener(window, 'load', findme);
