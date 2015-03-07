@@ -35,8 +35,9 @@ class UsersController < ApplicationController
   def show
     p params[:id]
     @user = User.find(params[:id])
-    p params[:latitude]
+
     @user.update_attributes(latitude: params[:latitude], longitude: params[:longitude])
+    p @user.latitude
   end
 
 end
