@@ -10,3 +10,34 @@
   padding: 50px;
   margin: 20px;
 }
+
+.invite-list {
+  width: 100%;
+  margin: auto;
+
+}
+
+.single-invite {
+  background-color: #001F5C;
+  color: #E6E6E6;
+  font-size: 40px;
+  padding: 50px;
+  margin: 20px;
+}
+
+.accept-decline-buttons {
+  display: inline;
+  float: right;
+  color: black;
+}
+
+
+#invite-to {
+  display: inline;
+  float: left;
+}
+
+#invited-by {
+  display: inline;
+  float: left;
+}

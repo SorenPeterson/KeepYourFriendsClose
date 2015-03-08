@@ -23,13 +23,6 @@
         Signed in as <strong><%= current_user.name %></strong>!
         <%= link_to "Sign out", signout_path, id: "sign_out" %>
     </div>
-    <% current_user.invitations.each do |invitation| %>
-      <p>
-        <%= link_to invitation.group.name, url_for(invitation.group) %>
-        <%= button_to "Accept", group_invitation_path(invitation.group, invitation) + '/accept', method: :delete, data: { confirm: true } %>
-        <%= button_to "Decline", group_invitation_path(invitation.group, invitation) + '/decline', method: :delete, data: { confirm: true } %>
-      </p>
-    <% end %>
   <% end %>
 
   <%= yield %>
