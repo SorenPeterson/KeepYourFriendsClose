@@ -1,5 +1,10 @@
 class GroupsController < ApplicationController
   def new
+    # p "new"
+    # respond_to do |format|
+    #   format.html { render :layout => false }
+    # end
+    # render partial: "new"
   end
 
   def create
@@ -8,7 +13,9 @@ class GroupsController < ApplicationController
 
       if(new_group.persisted?)
         new_group.users << current_user
-        redirect_to groups_path
+        # redirect_to groups_path
+          render json: new_group
+
       else
         flash[:group_creation_errors] = new_group.errors.full_messages
         redirect_to :back

@@ -6,15 +6,16 @@ button {
 }
 
 #group-list {
-  width: 85%;
+  width: 100%;
   margin: auto;
-  padding: 20px;
-  font-size: 40px;
+  /*padding: 50px;*/
 }
 
 .group-name {
-  padding: 20px;
-  margin: 5px;
+
+  font-size: 40px;
+  padding: 50px;
+  margin: 20px;
   background-color: #E6E6E6;
 }
 
@@ -28,6 +29,23 @@ button {
   text-decoration: bold;
   font-size: 45px;
 }
+
+/*new group*/
+
+.new-group-form {
+  margin-top: 20px;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  font-size: 25px;
+  background-color: #E6E6E6;
+}
+
+#group_header {
+  font-size: 50px;
+  color: #001F5C;
+}
+
 
 /*GROUP SHOW PAGE*/
 

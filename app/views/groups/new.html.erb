@@ -1,5 +1,6 @@
 <button id="back-link"><p><%= link_to "Back", groups_path %></p></button>
 
+<div class="new-group-form">
 <p>
   <% if flash[:group_creation_errors] %>
     <%= flash[:group_creation_errors] %>
@@ -12,3 +13,4 @@
 
   <%= f.submit %>
 <% end %>
+</div>
