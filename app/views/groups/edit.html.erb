@@ -21,22 +21,36 @@
     var friend_ids = <%= current_user.facebook.get_connections("me", "friends")[0]["id"] %>
     var friend_names = <%= current_user.facebook.get_connections("me", "friends")[0]["name"].to_json.html_safe %>
     var friend_images = <%= current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(small)")[0]["picture"]["data"]["url"].to_json.html_safe  %>
+    var friend_ids2 = <%= current_user.facebook.get_connections("me", "friends")[1]["id"] %>
+    var friend_names2 = <%= current_user.facebook.get_connections("me", "friends")[1]["name"].to_json.html_safe %>
+    var friend_images2 = <%= current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(small)")[1]["picture"]["data"]["url"].to_json.html_safe  %>
 
+    var friends_images_array = []
+
+    <% current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(small)").each do |person| %>
+      friends_images_array.push(<%= person["picture"]["data"]["url"].to_json.html_safe  %>)
+    <% end %>
+
+console.log(friends_images_array)
       var friends = [
-        { "id": friend_ids, "name": friend_names, "image": friend_images }
+        { "id": friend_ids, "name": friend_names, "image": friend_images },
+        { "id": friend_ids2, "name": friend_names2, "image": friend_images2 }
       ]
 
     $("input[name=name]").autocomplete({
-      source: friends,
-      select: function() {
-        console.log(source)
+      source: friends_list,
+      select: function(event, ui) {
         url: "/groups/<%= @group.id %>/invitations"
+        window.location.href = ui.item.value;
       }
     }).data("uiAutocomplete")._renderItem = function(ul, item) {
+      debugger
+      for (var i = 0; i < friends_images_array.length; i++ ) {
       return $("<li />")
-        .data("input[name=name]", item)
-            .append("<a><img src='" + friend_images + "' />" + item.label + "</a>")
+        .data("item.autocomplete", item)
+            .append("<a><img src='" + friends_images_array[i] + "' />" + item.label + "</a>")
             .appendTo(ul);
+      }
     };
 
     // $("#add-user").on("submit", function(e) {
