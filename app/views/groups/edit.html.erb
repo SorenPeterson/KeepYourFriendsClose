@@ -4,26 +4,55 @@
     <input type="submit" value="Add User">
   </form>
 
+ <!--  current_user.facebook.get_connections("me", "friends").map do |user|
+    u.facebook.get_object(user["id"]).map do |f|
+      link: f["link"], name: f["name"], id: f["id"]
+    end
+  end -->
+
   <script>
     var users = <%= User.pluck(:name).to_json.html_safe %>
+    var friends_list = <%= current_user.facebook.get_connections("me", "friends").map { |user| user["name"] }.to_json.html_safe %>
+
+    var friends = <%= current_user.facebook.get_connections("me", "friends").map { |user| current_user.facebook.get_object(user["id"])}.to_json.html_safe %>
+
+    var friends_image = <%= current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(small)")[0]['picture']['data']['url'].to_json.html_safe %>
+
+    var friend_ids = <%= current_user.facebook.get_connections("me", "friends")[0]["id"] %>
+    var friend_names = <%= current_user.facebook.get_connections("me", "friends")[0]["name"].to_json.html_safe %>
+    var friend_images = <%= current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(small)")[0]["picture"]["data"]["url"].to_json.html_safe  %>
+
+      source: friends = [
+        { "id": friend_ids, "name": friend_names, "image": friend_images }
+      ]
+
     $("input[name=name]").autocomplete({
-      source: users
-    });
+      source: friends_list,
+      select: function() {
+        console.log()
+        url: "/groups/<%= @group.id %>/invitations"
+      }
+    }).data("uiAutocomplete")._renderItem = function(ul, item) {
+      return $("<li />")
+        .data("input[name=name]", item)
+            .append("<a><img src='" + friend_images + "' />" + item.label + "</a>")
+            .appendTo(ul);
+    };
 
-    $("#add-user").on("submit", function(e) {
-      e.preventDefault();
+    // $("#add-user").on("submit", function(e) {
+    //   e.preventDefault();
 
-      $.ajax({
-        type: "post",
-        url: "/groups/<%= @group.id %>/invitations",
-        data: $(this).serialize()
-      })
-    })
+    //   $.ajax({
+    //     type: "post",
+    //     url: "/groups/<%= @group.id %>/invitations",
+    //     data: $(this).serialize()
+    //   })
+    // })
   </script>
 <% end %>
 
 <ul id="user-list">
   <% @users.each do |user| %>
-    <li><%= user.name %></li>
+    <li><img src="<%= current_user.facebook.get_object("me?fields=picture")["picture"]["data"]["url"] %>"><%= user.name %></li>
   <% end %>
 </ul>

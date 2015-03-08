@@ -189,7 +189,7 @@ DEPENDENCIES
   dotenv-rails
   jbuilder (~> 2.0)
   jquery-rails
-  koala
+  koala (~> 1.11.0rc)
   omniauth-facebook
   rails (= 4.2.0)
   sass-rails (~> 5.0)

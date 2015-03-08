@@ -35,7 +35,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'dotenv-rails'
 
 gem 'omniauth-facebook'
-gem 'koala'
+# gem 'koala'
+
+gem 'koala', "~> 1.11.0rc"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
