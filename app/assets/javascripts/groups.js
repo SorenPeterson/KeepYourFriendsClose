@@ -34,10 +34,26 @@ $(document).ready(function(response){
       data: data
     }).done(function(response){
       $(".new_group").replaceWith("<span id='group_header'>"+response.name+"</span>");
+
+      var group_id = response.id
+
+      show_group_edits(group_id);
     })
   })
 
+  // show options to add people to the group
+  function show_group_edits(group_id){
+    $.ajax({
+      url: "/groups/"+group_id+"/edit",
+      type: "get",
+      dataType: "html"
+    }).done(function(response){
+      // console.log("done");
+      $(".new-group-form").after(response)
+    })
+  }
 
+// switch between chat and map. toggle class?
   $("#chat-link").on("click", function(event){
     event.preventDefault();
     $("#map-canvas").hide();
