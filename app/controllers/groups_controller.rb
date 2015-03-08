@@ -22,6 +22,7 @@ class GroupsController < ApplicationController
   def edit
     @group = Group.find(params[:id])
     @users = @group.users
+    @found_person = User.find_by(name:"Cordelia Peters").uid
   end
 
   def destroy
