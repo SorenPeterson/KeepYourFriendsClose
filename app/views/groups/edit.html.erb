@@ -14,7 +14,7 @@
     var users = <%= User.pluck(:name).to_json.html_safe %>
     var friends_list = <%= current_user.facebook.get_connections("me", "friends").map { |user| user["name"] }.to_json.html_safe %>
 
-    var friends = <%= current_user.facebook.get_connections("me", "friends").map { |user| current_user.facebook.get_object(user["id"])}.to_json.html_safe %>
+    var friend_id = <%= current_user.facebook.get_connections("me", "friends").map { |user| current_user.facebook.get_object(user["id"])}.to_json.html_safe %>
 
     var friends_image = <%= current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(small)")[0]['picture']['data']['url'].to_json.html_safe %>
 
@@ -22,14 +22,14 @@
     var friend_names = <%= current_user.facebook.get_connections("me", "friends")[0]["name"].to_json.html_safe %>
     var friend_images = <%= current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(small)")[0]["picture"]["data"]["url"].to_json.html_safe  %>
 
-      source: friends = [
+      var friends = [
         { "id": friend_ids, "name": friend_names, "image": friend_images }
       ]
 
     $("input[name=name]").autocomplete({
-      source: friends_list,
+      source: friends,
       select: function() {
-        console.log()
+        console.log(source)
         url: "/groups/<%= @group.id %>/invitations"
       }
     }).data("uiAutocomplete")._renderItem = function(ul, item) {
