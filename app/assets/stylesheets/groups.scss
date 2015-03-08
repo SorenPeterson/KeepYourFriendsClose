@@ -1,3 +1,96 @@
+button {
+  margin: auto;
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+}
+
+#group-list {
+  width: 100%;
+  margin: auto;
+  /*padding: 50px;*/
+}
+
+.group-name {
+  font-size: 40px;
+  padding: 50px;
+  margin: 20px;
+  background-color: #E6E6E6;
+}
+
+/*list of groups*/
+.group-name li a{
+  color: #000000;
+  text-decoration: none;
+}
+.group-name li a:hover {
+  color: #001F5C;
+  text-decoration: bold;
+  font-size: 45px;
+}
+
+/*new group*/
+
+.new-group-form {
+  margin-top: 20px;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  font-size: 25px;
+  background-color: #E6E6E6;
+}
+
+#group_header {
+  font-size: 50px;
+  color: #001F5C;
+}
+
+
+/*GROUP SHOW PAGE*/
+
+#chat-map-choice {
+  width: 100%;
+  margin: auto;
+  height: 75px;
+  background-color: #001F5C;
+}
+
+.choose{
+  margin-top: 1%;
+  display: inline;
+  float: left;
+  width: 50%;
+  text-align: center;
+  color: white;
+  font-family: 'Pontano Sans', sans-serif;
+  font-size: 30px;
+}
+
+/*GROUP EDIT*/
+
+#add-user-form {
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  font-size: 25px;
+  background-color: #E6E6E6;
+}
+
+
+
+/*MAP & CHAT*/
+
+#chat-canvas {
+  height: 500px;
+  width: 500px;
+  margin: auto;
+  padding: 0;
+  border: 5px solid black;
+}
+
+#chat-input {
+  margin: auto;
+}
 
 #map-canvas {
   height: 500px;
@@ -6,3 +99,4 @@
   padding: 0;
   border: 5px solid black;
 }
+

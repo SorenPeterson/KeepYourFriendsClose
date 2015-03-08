@@ -11,20 +11,18 @@
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvbVDTuIX7MrUCHeZkkCEU44EDdFiFKKw"></script>
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Pontano+Sans' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
 
 <div class="container">
   <% if current_user %>
-    Signed in as <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-    <% current_user.invitations.each do |invitation| %>
-      <p>
-        <%= link_to invitation.group.name, url_for(invitation.group) %>
-        <%= button_to "Accept", group_invitation_path(invitation.group, invitation) + '/accept', method: :delete, data: { confirm: true } %>
-        <%= button_to "Decline", group_invitation_path(invitation.group, invitation) + '/decline', method: :delete, data: { confirm: true } %>
-      </p>
-    <% end %>
+    <div class="nav">
+      <div id="logo">Keep Your <br> Friends Close</div>
+        Signed in as <strong><%= current_user.name %></strong>!
+        <%= link_to "Sign out", signout_path, id: "sign_out" %>
+    </div>
   <% end %>
 
   <%= yield %>

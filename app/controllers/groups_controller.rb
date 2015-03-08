@@ -1,5 +1,10 @@
 class GroupsController < ApplicationController
   def new
+    # p "new"
+    # respond_to do |format|
+    #   format.html { render :layout => false }
+    # end
+    # render partial: "new"
   end
 
   def create
@@ -8,7 +13,9 @@ class GroupsController < ApplicationController
 
       if(new_group.persisted?)
         new_group.users << current_user
-        redirect_to groups_path
+        # redirect_to groups_path
+          render json: new_group
+
       else
         flash[:group_creation_errors] = new_group.errors.full_messages
         redirect_to :back
@@ -22,7 +29,10 @@ class GroupsController < ApplicationController
   def edit
     @group = Group.find(params[:id])
     @users = @group.users
-    @found_person = User.find_by(name:"Cordelia Peters").uid
+
+    respond_to do |format|
+      format.html { render :layout => false }
+    end
   end
 
   def destroy
@@ -38,10 +48,16 @@ class GroupsController < ApplicationController
     unless (@users.find_by(id: current_user.id))
       redirect_to groups_path
     end
+  end
 
+  def map
+    @group = Group.find(params[:id])
+    @users = @group.users
+  end
 
-
-
+  def chat
+    @group = Group.find(params[:id])
+    @users = @group.users
   end
 
 private

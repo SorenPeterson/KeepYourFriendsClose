@@ -1,0 +1,13 @@
+<div id="chat-map-choice">
+  <div class="choose" id="chat-link">Chat</div>
+  <div class="choose" id="map-link">Map</div>
+</div>
+
+<button><p><%= link_to "Back", groups_path %></p></button>
+
+<div id="map-canvas" data-group-id= "<%=@group.id%>", data-user-id= "<%=current_user.id%>">
+</div>
+
+<script>
+  <%= render "map.js" %>
+</script>

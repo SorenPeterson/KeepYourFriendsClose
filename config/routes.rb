@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     resources :invitations
   end
 
+  get '/groups/:id/map', to: 'groups#map'
+  get '/groups/:id/chat', to: 'groups#chat'
+
   resources :invitations
   delete '/groups/:group_id/invitations/:id/accept', to: 'invitations#accept'
   delete '/groups/:group_id/invitations/:id/decline', to: 'invitations#decline'

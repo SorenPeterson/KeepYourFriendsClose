@@ -13,7 +13,7 @@ function updateCurrentUser(){
   var latitude = location.coords.latitude
   var longitude = location.coords.longitude
   var group_id = $("#map-canvas").attr("data-group-id")
-  var user_id = $("#map-canvas").attr("data-user-id")
+  user_id = $("#map-canvas").attr("data-user-id")
   var location_hash = {latitude: latitude, longitude: longitude}
   console.log(location_hash);
   console.log("/groups/"+group_id+"/users/"+user_id)
@@ -28,7 +28,7 @@ function updateCurrentUser(){
   })
 }
 
-var mapOptions = {
+  var mapOptions = {
     center: currentlocation, // or the average of the users locations
     zoom: 15,
   };
@@ -36,10 +36,17 @@ var mapOptions = {
   var map = new google.maps.Map(document.getElementById('map-canvas'),
     mapOptions);
 
+function pickUserIcon(){
+  var colors = ["blue", "brown", "darkgreen", "green", "orange", "paleblue", "pink", "purple", "red", "yellow"]
+  var randomColor = colors[Math.floor(Math.random()*colors.length)];
+  var image = "../../assets/images/"+randomColor+"_Marker"+firstLetter+".png"
+  return image;
+}
+
   var marker = new google.maps.Marker({
     position: currentlocation,
-    map: map,
-    title: 'Ryan Urie'
+    map: map
+    // icon: pickUserIcon()
   });
 
 // create markers for each user on the same map

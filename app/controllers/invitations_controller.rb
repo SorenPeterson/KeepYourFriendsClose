@@ -13,7 +13,8 @@ class InvitationsController < ApplicationController
 
     if @user && @group.users.find_by(name: params[:name]) == nil && Invitation.find_by(user_id: @user.id, group_id: params[:group_id]) == nil
       Invitation.create(user_id: @user.id, group_id: params[:group_id])
-      render inline: ''
+      # render inline: ''
+      render json: @user
     else
       render inline: '', status: 418
     end
@@ -29,6 +30,8 @@ class InvitationsController < ApplicationController
   end
 
   def index
+    @invitations = Invitation.where(user_id: current_user.id)
+
   end
 
   def show
