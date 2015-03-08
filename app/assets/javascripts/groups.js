@@ -20,6 +20,7 @@ $(document).ready(function(response){
     var duration = 500;
     $("#new-group-link").toggle(effect, options, duration);
     $("#group-list").toggle(effect, options, duration);
+    $("#invitations-link").toggle(effect, options, duration);
   })
 
   // create a new group
@@ -54,16 +55,16 @@ $(document).ready(function(response){
   }
 
 // switch between chat and map. toggle class?
-  $("#chat-link").on("click", function(event){
-    event.preventDefault();
-    $("#map-canvas").hide();
-    $("#chat-canvas").show();
-  })
+  // $("#chat-link").on("click", function(event){
+  //   event.preventDefault();
+  //   $("#map-canvas").hide();
+  //   $("#chat-canvas").show();
+  // })
 
-  $("#map-link").on("click", function(event){
-    event.preventDefault();
-    $("#chat-canvas").hide();
-    $("#map-canvas").show();
-  })
+  // $("#map-link").on("click", function(event){
+  //   event.preventDefault();
+  //   $("#chat-canvas").hide();
+  //   $("#map-canvas").show();
+  // })
 
 })

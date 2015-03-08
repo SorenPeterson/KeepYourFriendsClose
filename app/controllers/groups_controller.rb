@@ -48,10 +48,16 @@ class GroupsController < ApplicationController
     unless (@users.find_by(id: current_user.id))
       redirect_to groups_path
     end
+  end
 
+  def map
+    @group = Group.find(params[:id])
+    @users = @group.users
+  end
 
-
-
+  def chat
+    @group = Group.find(params[:id])
+    @users = @group.users
   end
 
 private

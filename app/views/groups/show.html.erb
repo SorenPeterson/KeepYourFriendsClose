@@ -6,6 +6,12 @@
 <button><p><%= link_to "Back", groups_path %>
 <%= link_to "Edit", edit_group_path %></p></button>
 
+<div id="map-canvas" data-group-id= "<%=@group.id%>", data-user-id= "<%=current_user.id%>">
+</div>
+
+<script>
+  <%= render "map.js" %>
+</script>
 
 <div id="chat-canvas">
   <form id="chat-input">
@@ -21,17 +27,10 @@
   <%= render "chat.js" %>
 </script>
 
-
-<div id="map-canvas" data-group-id= "<%=@group.id%>", data-user-id= "<%=current_user.id%>">
-</div>
-
-<script>
-  <%= render "map.js" %>
-</script>
-
-
 <ul id="user-list">
   <% @users.each do |user| %>
     <li><%= user.name %></li>
   <% end %>
 </ul>
+
+
