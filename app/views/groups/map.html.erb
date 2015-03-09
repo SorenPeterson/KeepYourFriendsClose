@@ -1,8 +1,8 @@
 <%= render partial: "header" %>
 
-<button><p><%= link_to "Back", groups_path %></p></button>
-
-<div id="map-canvas" data-group-id= "<%=@group.id%>", data-user-id= "<%=current_user.id%>">
+<div class="row">
+  <div class="col span_12" id="map-canvas" data-group-id="<%=@group.id%>", data-user-id="<%=current_user.id%>">
+  </div>
 </div>
 
 <script>

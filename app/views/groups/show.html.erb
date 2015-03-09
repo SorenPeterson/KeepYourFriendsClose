@@ -1,32 +1,6 @@
 <%= render partial: "header" %>
 
-<p>
-  <button><%= link_to "Back", groups_path %></button>
-  <% if current_user.id == @group.admin.id %>
-    <button><%= link_to "Edit", edit_group_path %></button>
-  <% end %>
-</p>
-
-<div id="map-canvas" data-group-id= "<%=@group.id%>", data-user-id= "<%=current_user.id%>">
-</div>
-
-<script>
-  <%= render "map.js" %>
-</script>
-
-<div id="chat-canvas">
-  <form id="chat-input">
-    <input type="text" name="message">
-    <input type="submit" name="send-message" value="Send">
-  </form>
-
-  <div id="chat-box">
-  </div>
-</div>
-
-<script>
-  <%= render "chat.js" %>
-</script>
+<p><%= @group.description %></p>
 
 <ul id="user-list">
   <% @users.each do |user| %>
@@ -34,4 +8,6 @@
   <% end %>
 </ul>
 
-
+<% if current_user.id == @group.admin.id %>
+  <button><%= link_to "Edit", edit_group_path %></button>
+<% end %>
