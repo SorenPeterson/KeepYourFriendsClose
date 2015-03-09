@@ -1,5 +1,8 @@
 <div class="row">
+  <h1>Invitations</h1>
+</div>
 
+<div class="row">
   <% @invitations.each do |invitation| %>
     <div class="col span_12">
         <span id="invite-to"><%= link_to invitation.group.name, url_for(invitation.group) %></span></br>
