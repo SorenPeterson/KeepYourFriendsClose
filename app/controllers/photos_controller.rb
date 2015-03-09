@@ -19,7 +19,7 @@ class PhotosController < ApplicationController
     photo = Photo.find(params[:id])
     photo.destroy
 
-    render json: photo
+    redirect_to :back
   end
 
 end
