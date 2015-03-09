@@ -5,6 +5,8 @@
 
 <div id="group-list">
   <% (@groups ||= []).each do |group| %>
-    <div class="row col span_12 item"><%= link_to group.name, url_for(group) %></div>
+    <div class="row col span_12 item">
+      <a href="/groups/<%= group.id %>/map"><%= group.name %></a>
+    </div>
   <% end %>
 </div>
