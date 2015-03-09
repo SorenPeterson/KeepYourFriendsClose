@@ -14,8 +14,7 @@ class GroupsController < ApplicationController
       if(new_group.persisted?)
         new_group.users << current_user
         # redirect_to groups_path
-          render json: new_group
-
+        redirect_to url_for(new_group)
       else
         flash[:group_creation_errors] = new_group.errors.full_messages
         redirect_to :back
@@ -31,10 +30,6 @@ class GroupsController < ApplicationController
   def edit
     @group = Group.find(params[:id])
     @users = @group.users
-
-    respond_to do |format|
-      format.html { render :layout => false }
-    end
   end
 
   def destroy
@@ -62,6 +57,10 @@ class GroupsController < ApplicationController
   def chat
     @group = Group.find(params[:id])
     @users = @group.users
+  end
+
+  def photos
+    @group = Group.find(params[:id])
   end
 
 private

@@ -1,12 +1,10 @@
-<button id="new-group-link"><p><%= link_to "New Group", new_group_path %></p></button>
-<button id="invitations-link"><p><%= link_to "Invites", invitations_path %></p></button>
+<div class="row">
+  <div class="col span_6 button"><p><%= link_to "New Group", new_group_path %></p></div>
+  <div class="col span_6 button"><p><%= link_to "Invites", invitations_path %></p></div>
+</div>
 
 <div id="group-list">
-  <!-- <ul> -->
-    <% (@groups ||= []).each do |group| %>
-    <div class="group-name">
-    <li><%= link_to group.name, url_for(group) %></li>
-    </div>
-    <% end %>
-  <!-- </ul> -->
+  <% (@groups ||= []).each do |group| %>
+    <div class="row col span_12 item"><%= link_to group.name, url_for(group) %></div>
+  <% end %>
 </div>

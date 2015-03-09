@@ -1,42 +1,11 @@
-body {
-  padding: 0;
+.facebook-button a {
+  color: #0A5BC3;
+  text-decoration: none;
 }
 
-.container {
-  max-width: 100%;
-  margin: auto;
-}
-
-/*nav bar when logged in*/
-.nav {
-  text-align: right;
-  height: 200px;
-  background-color: #7DBDFF;
-  padding: 25px;
-}
-/*logo in the corner of the navbar*/
-#logo {
-  text-align: left;
-  color: #001F5C;
-  font-size: 60px;
-  font-family: 'Pontano Sans', sans-serif;
-}
-
-#user_login {
-  margin-top: 50%;
-  text-align: center;
-  padding: 100px;
-  background-color: #7DBDFF;
-}
-
-#title {
-  color: white;
-  font-size: 75px;
-  font-family: 'Pontano Sans', sans-serif;
-}
-
-#user_login a {
-  color: white;
-  font-size: 40px;
-  font-family: 'Pontano Sans', sans-serif;
+.facebook-button {
+  padding: 10px;
+  border-bottom: 4px solid #0D233F;
+  display: inline-block;
+  background-color: #637996;
 }

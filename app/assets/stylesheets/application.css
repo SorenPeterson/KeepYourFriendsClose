@@ -15,3 +15,30 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  color: white;
+  text-decoration: none;
+}
+
+a {
+  color: #FF9E00;
+  text-decoration: none;
+}
+
+.header {
+  padding: 10px;
+  background-color: #90A437;
+  border-bottom: 4px solid #4E5D0C;
+}
+
+.footer {
+  padding: 10px;
+  background-color: #90A437;
+  border-bottom: 4px solid #4E5D0C;
+}
+
+.button {
+  background-color: #637996;
+  text-align: center;
+}

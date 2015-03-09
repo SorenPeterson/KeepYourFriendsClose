@@ -5,9 +5,8 @@
     <input type="hidden" id="search-id">
     <input type="submit" value="Add User">
   </form>
-  <div>
 
-  <input type="button" value="Add/Update Description" onclick="displayForm(updateForm)" /></div>
+  <div><input type="button" value="Add/Update Description" onclick="displayForm(updateForm)" /></div>
 
   <div id="updateForm" style="display: none">
     <%= form_for @group, url: group_path do |f| %>

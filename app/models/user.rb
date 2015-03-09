@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :owned_groups, class_name: "Group", foreign_key: :user_id
 
   has_many :invitations
+  has_many :photos
 
   def self.from_omniauth(auth)
     user = User.find_or_create_by(provider: auth.provider, uid: auth.uid)
