@@ -1,7 +1,8 @@
-<div class="row">
-  <div class="col span_6 button"><p><%= link_to "New Group", new_group_path %></p></div>
-  <div class="col span_6 button"><p><%= link_to "Invites", invitations_path %></p></div>
+<div class="row col span_12">
+  <h1>My Groups</h1>
 </div>
+
+<%= render partial: "partials/navheader" %>
 
 <div id="group-list">
   <% (@groups ||= []).each do |group| %>

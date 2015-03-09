@@ -1,6 +1,8 @@
-<div class="row">
+<div class="row col span_12">
   <h1>Invitations</h1>
 </div>
+
+<%= render partial: "partials/navheader" %>
 
 <div class="row">
   <% @invitations.each do |invitation| %>
@@ -13,5 +15,4 @@
         </div>
     </div>
   <% end %>
-
 </div>

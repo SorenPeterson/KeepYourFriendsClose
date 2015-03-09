@@ -19,7 +19,8 @@ $("#take-photo").on("click", function(){
         data: {url: url, user_id: user_id}
       }).done(function(response){
         console.log("success");
-        $("#photo-stream").append("<img src="+response.url+">")
+        $("#photo-stream").append("<img src="+response.url+">"+"
+          <button>Delete</button>");
       })
     });
 })
