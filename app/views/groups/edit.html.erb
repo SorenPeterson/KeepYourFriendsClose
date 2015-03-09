@@ -5,10 +5,37 @@
     <input type="hidden" id="search-id">
     <input type="submit" value="Add User">
   </form>
+
+  <div><input type="button" value="Add/Update Description" onclick="displayForm(updateForm)" /></div>
+
+  <div id="updateForm" style="display: none">
+    <%= form_for @group, url: group_path do |f| %>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    <%= f.submit "Description" %>
+  </div>
+    <%= link_to 'Delete Group', group_path, method: :delete, data: { confirm: 'Are you sure?' } %></br>
+    Group Name: <%= @group.name %> </br>
+    <% if @group.description != nil %>
+      Group Description: <%= @group.description %>
+    <% end %>
+     <% end %>
+  </div>
+  </div>
   </div>
   <script>
 
-    $(function() {
+  function displayForm(formId) {
+    if (false == $(formId).is(':visible')) {
+      $(formId).show(250);
+    }
+    else {
+      $(formId).hide(250);
+    }
+  }
+
+  $(function() {
+
 
     var coolbeans = <%= current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(small)").collect {|item| { id: item["id"], value: item["name"], image: item["picture"]["data"]["url"]} }.to_json.html_safe %>
 
