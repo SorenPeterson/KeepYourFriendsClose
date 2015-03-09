@@ -1,5 +1,11 @@
+
+
 <% if current_user.id == @group.admin.id %>
   <div id="add-user-form">
+    <div id="error-box" style="display: none;">
+      <p>Error Message</p>
+    </div>
+
     <form id="add-user">
       <input type="text" name="name" id="search">
       <input type="hidden" name="uid" value="">

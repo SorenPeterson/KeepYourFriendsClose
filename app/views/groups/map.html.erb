@@ -1,7 +1,9 @@
 <%= render partial: "header" %>
 
 <div class="row">
-  <div class="col span_12" id="map-canvas" data-group-id="<%=@group.id%>", data-user-id="<%=current_user.id%>">
+  <div class="col span_12">
+    <div style="height: 400px" id="map-canvas" data-group-id="<%=@group.id%>", data-user-id="<%=current_user.id%>">
+    </div>
   </div>
 </div>
 

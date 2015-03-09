@@ -54,5 +54,7 @@ $("#add-user").on("submit", function(event) {
   }).done(function(response){
     console.log(response);
     $(".user-list ul").prepend("<div id='user-name'><li>"+response.name+"</li></div>")
+  }).fail(function(response) {
+    $("#error-box").show();
   })
 })
