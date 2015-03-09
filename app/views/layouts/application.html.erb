@@ -20,14 +20,25 @@
 
 <div class="container">
   <% if current_user %>
-    <div class="nav">
-      <div id="logo">Keep Your <br> Friends Close</div>
-        Signed in as <strong><%= current_user.name %></strong>!
-        <%= link_to "Sign out", signout_path, id: "sign_out" %>
+    <div class="row col span_12 header">
+      <p>Keep Your Friends Close</p>
     </div>
   <% end %>
 
   <%= yield %>
+
+  <% if current_user %>
+    <div class="row footer">
+      <div class="col span_2">
+        <button><%= link_to "<-" , groups_path %></button>
+      </div>
+
+      <div class="nav col span_10">
+        Signed in as <strong><%= current_user.name %></strong>!
+        <%= link_to "Sign out", signout_path, id: "sign_out" %>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 </body>
