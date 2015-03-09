@@ -1,5 +1,14 @@
 <%= render partial: "header" %>
 
+<div class="help-button">
+  <button id="help-button"> Send For Help </button>
+</div>
+
+<script>
+  <%= render "twilio.js" %>
+</script>
+
+
 <div id="chat-canvas">
   <form id="chat-input">
     <input type="text" name="message">

@@ -73,6 +73,11 @@ class GroupsController < ApplicationController
     redirect_to groups_path
   end
 
+
+  def send
+
+  end
+
 private
 
   before_filter :require_login
