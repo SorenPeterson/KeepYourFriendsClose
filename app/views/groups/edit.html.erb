@@ -1,99 +1,55 @@
 <% if current_user.id == @group.admin.id %>
   <div id="add-user-form">
-  <form id="add-user">
-    <input type="text" name="name" id="search">
-    <input type="hidden" id="search-id">
-    <input type="submit" value="Add User">
-  </form>
+    <form id="add-user">
+      <input type="text" name="name" id="search">
+      <input type="hidden" name="uid" value="">
+      <input type="submit" value="Add User">
+    </form>
 
-  <div><input type="button" value="Add/Update Description" onclick="displayForm(updateForm)" /></div>
+    <div><input type="button" value="Add/Update Description" onclick="displayForm(updateForm)" /></div>
 
-  <div id="updateForm" style="display: none">
-    <%= form_for @group, url: group_path do |f| %>
-      <%= f.label :description %>
-      <%= f.text_field :description %>
-    <%= f.submit "Description" %>
-  </div>
+    <div id="updateForm" style="display: none">
+      <%= form_for @group, url: group_path do |f| %>
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+        <%= f.submit "Description" %>
+      <% end %>
+    </div>
+
     <%= link_to 'Delete Group', group_path, method: :delete, data: { confirm: 'Are you sure?' } %></br>
+
     Group Name: <%= @group.name %> </br>
+
     <% if @group.description != nil %>
       Group Description: <%= @group.description %>
     <% end %>
-     <% end %>
+
   </div>
-  </div>
-  </div>
+
   <script>
-
-  function displayForm(formId) {
-    if (false == $(formId).is(':visible')) {
-      $(formId).show(250);
-    }
-    else {
-      $(formId).hide(250);
-    }
-  }
-
-  $(function() {
-
-
-    var coolbeans = <%= current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(small)").collect {|item| { id: item["id"], value: item["name"], image: item["picture"]["data"]["url"]} }.to_json.html_safe %>
-
-    $( "#search" ).autocomplete({
-      minLength: 0,
-      source: coolbeans,
-      focus: function( event, ui ) {
-        $( "#search" ).val( ui.item.label );
-        return false;
-      },
-      select: function( event, ui ) {
-        $( "#search" ).val( ui.item.label );
-        $( "#search-id" ).val( ui.item.value );
-        url: "/groups/<%= @group.id %>/invitations"
-        return false;
-      }
-    })
-    .autocomplete( "instance" )._renderItem = function( ul, item ) {
-      return $( "<li>" )
-        .append("<a><img src='" + item.image + "' />" + item.label + "</a>")
-        .appendTo( ul );
-    };
-  });
-
-    // $("#add-user").on("submit", function(e) {
-    //   e.preventDefault();
-
-    //   $.ajax({
-    //     type: "post",
-    //     url: "/groups/<%= @group.id %>/invitations",
-    //     data: $(this).serialize()
-    //   })
-    // })
-
-  $("#add-user").on("submit", function(event) {
-    event.preventDefault();
-    console.log($(this).serialize())
-    console.log("<%=@group.id%>")
-    $.ajax({
-      type: "post",
-      url: "/groups/<%= @group.id %>/invitations",
-      data: $(this).serialize()
-    }).done(function(response){
-      console.log(response);
-      $(".user-list ul").prepend("<div id='user-name'><li>"+response.name+"</li></div>")
-    })
-  })
-
+    <%= render partial: "edit.js" %>
   </script>
+
 <% end %>
 
-<div class="user-list">
-<ul id="user-list">
+<h1>Users in group</h1>
+
+<div class="row">
   <% @users.each do |user| %>
-    <div id="user-name"><li>
+    <div id="col span_12">
       <img src="<%= current_user.facebook.get_picture(current_user.uid) %>">
       <%= user.name %>
-    </li></div>
+    </div>
   <% end %>
-</ul>
+</div>
+
+<h1>Users invited</h1>
+
+<div class="row">
+  <% @group.invitations.each do |invitation| %>
+    <div id="col span_12">
+      <img src="<%= invitation.user.facebook.get_picture(invitation.user.uid) %>">
+      <%= invitation.user.name %>
+    </div>
+  <% end %>
 </div>
