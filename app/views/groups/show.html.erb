@@ -1,7 +1,4 @@
-<div id="row">
-  <div class="col span_6 button"><p><a href="/groups/<%= @group.id %>/chat">Chat</a></p></div>
-  <div class="col span_6 button"><p><a href="/groups/<%= @group.id %>/map">Map</a></p></div>
-</div>
+<%= render partial: "header" %>
 
 <p>
   <button><%= link_to "Back", groups_path %></button>
