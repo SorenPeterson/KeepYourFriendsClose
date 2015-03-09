@@ -30,7 +30,7 @@ function updateCurrentUser(){
 
   var mapOptions = {
     center: currentlocation, // or the average of the users locations
-    zoom: 15,
+    zoom: 17,
   };
 
   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -50,15 +50,6 @@ function pickUserIcon(){
   });
 
 
-function pickGroupIcons(letter){
-  var firstLetter = letter
-  var colors = ["blue", "brown", "darkgreen", "green", "orange", "paleblue", "pink", "purple", "red", "yellow"]
-  var randomColor = colors[Math.floor(Math.random()*colors.length)];
-  var image = "/assets/"+randomColor+"_Marker"+firstLetter+".png"
-  console.log(image);
-  return image;
-}
-
 // create markers for each user on the same map
 function updateGroupMarkers(){
   var group_id = $("#map-canvas").attr("data-group-id")
@@ -72,7 +63,7 @@ function updateGroupMarkers(){
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(response[i].latitude, response[i].longitude),
         map: map,
-        icon: pickGroupIcons(response[i].name[0]),
+        icon: "/assets/"+response[i].color+"_Marker"+response[i].name[0]+".png",
         title: response[i].name
       });
     }
@@ -87,7 +78,6 @@ function getupdatedlocation(){
       // var newlocation = new google.maps.LatLng(37.7952, 122.4028)
       if ( newlocation.k != currentlocation.k || newlocation.D != currentlocation.D) {
         marker.setPosition(newlocation);
-        map.panTo(newlocation)
         updateCurrentUser();
         currentlocation = newlocation;
       }

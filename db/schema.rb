@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309032706) do
+ActiveRecord::Schema.define(version: 20150309185759) do
 
   create_table "groups", force: :cascade do |t|
     t.integer  "user_id"
@@ -48,10 +48,11 @@ ActiveRecord::Schema.define(version: 20150309032706) do
     t.string   "email"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "color",            default: "blue"
   end
 
 end
