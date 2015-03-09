@@ -49,6 +49,16 @@ function pickUserIcon(){
     icon: pickUserIcon()
   });
 
+
+function pickGroupIcons(letter){
+  var firstLetter = letter
+  var colors = ["blue", "brown", "darkgreen", "green", "orange", "paleblue", "pink", "purple", "red", "yellow"]
+  var randomColor = colors[Math.floor(Math.random()*colors.length)];
+  var image = "/assets/"+randomColor+"_Marker"+firstLetter+".png"
+  console.log(image);
+  return image;
+}
+
 // create markers for each user on the same map
 function updateGroupMarkers(){
   var group_id = $("#map-canvas").attr("data-group-id")
@@ -62,6 +72,7 @@ function updateGroupMarkers(){
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(response[i].latitude, response[i].longitude),
         map: map,
+        icon: pickGroupIcons(response[i].name[0]),
         title: response[i].name
       });
     }
