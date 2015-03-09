@@ -2,11 +2,14 @@
 
 <p><%= @group.description %></p>
 
-<ul id="user-list">
+<div class="row">
   <% @users.each do |user| %>
-    <li><%= user.name %></li>
+    <div class="col span_12">
+      <img src="<%= user.facebook.get_picture(user.uid) %>">
+      <%= user.name %>
+    </div>
   <% end %>
-</ul>
+</div>
 
 <% if current_user.id == @group.admin.id %>
   <button><%= link_to "Edit", edit_group_path %></button>
