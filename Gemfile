@@ -40,7 +40,7 @@ gem 'omniauth-facebook'
 gem 'koala', "~> 1.11.0rc"
 
 gem 'cloudinary'
-require 'eventbrite-client'
+# gem 'eventbrite-client'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
