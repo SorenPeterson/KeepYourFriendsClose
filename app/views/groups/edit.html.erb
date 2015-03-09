@@ -5,51 +5,38 @@
     <input type="hidden" id="search-id">
     <input type="submit" value="Add User">
   </form>
+  <div>
+
+  <input type="button" value="Add/Update Description" onclick="displayForm(updateForm)" /></div>
+
+  <div id="updateForm" style="display: none">
+    <%= form_for @group, url: group_path do |f| %>
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    <%= f.submit "Description" %>
+  </div>
+    <%= link_to 'Delete Group', group_path, method: :delete, data: { confirm: 'Are you sure?' } %></br>
+    Group Name: <%= @group.name %> </br>
+    <% if @group.description != nil %>
+      Group Description: <%= @group.description %>
+    <% end %>
+     <% end %>
+  </div>
+  </div>
   </div>
   <script>
- //    var users = <%= User.pluck(:name).to_json.html_safe %>
- //    var friends_list = <%= current_user.facebook.get_connections("me", "friends").map { |user| user["name"] }.to_json.html_safe %>
 
- //    var friend_uid_and_name = <%= current_user.facebook.get_connections("me", "friends").to_json.html_safe %>
+  function displayForm(formId) {
+    if (false == $(formId).is(':visible')) {
+      $(formId).show(250);
+    }
+    else {
+      $(formId).hide(250);
+    }
+  }
 
- //    var friend_images = <%= current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(small)")[0]["picture"]["data"]["url"].to_json.html_safe  %>
+  $(function() {
 
- //    var friends_images_array = []
-
- //    var friend_id = <%= User.find_by(name:"Cordelia Peters").uid.to_json.html_safe %>
-
- //    // console.log(friend_id)
-
- //    var friend_imagessssssss = <%= current_user.facebook.get_picture(@found_person).to_json.html_safe %>
-
- // console.log(friend_imagessssssss)
-
-
-  // var friend_imagessssssss = <%= current_user.facebook.get_picture("1078180995532112").to_json.html_safe %>
-
-
-  // <% current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(small)").to_json.html_safe %>
-
-
-      // var friends = [
-      //   { id: friend_ids, name: friend_names, image: friend_images },
-      // ]
-// console.log(friends)
-
-    // $("input[name=name]").autocomplete({
-    //   source: friends_list,
-    //   select: function(event, ui) {
-    //     $("#project").val()
-    //     url: "/groups/<%= @group.id %>/invitations"
-    //   }
-    // }).data("uiAutocomplete")._renderItem = function(ul, item) {
-    //   return $("<li />")
-    //     .data("item.autocomplete", item)
-    //         .append("<a><img src='" + friend_imagessssssss + "' />" + item.label + "</a>")
-    //         .appendTo(ul);
-    // };
-
-    $(function() {
 
     var coolbeans = <%= current_user.facebook.get_connections("me", "friends?fields=id,name,picture.type(small)").collect {|item| { id: item["id"], value: item["name"], image: item["picture"]["data"]["url"]} }.to_json.html_safe %>
 

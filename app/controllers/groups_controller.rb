@@ -24,6 +24,8 @@ class GroupsController < ApplicationController
   end
 
   def update
+    @group = Group.find(params[:id]).update(description: params[:group][:description])
+    redirect_to group_path
   end
 
   def edit
@@ -36,6 +38,8 @@ class GroupsController < ApplicationController
   end
 
   def destroy
+    @group.destroy
+    redirect_to groups_path
   end
 
   def index
