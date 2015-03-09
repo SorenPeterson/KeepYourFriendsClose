@@ -32,13 +32,24 @@
 
 <% end %>
 
-<div class="user-list row">
-  <ul id="user-list">
-    <% @users.each do |user| %>
-    <div id="user-name col span_12"><li>
+<h1>Users in group</h1>
+
+<div class="row">
+  <% @users.each do |user| %>
+    <div id="col span_12">
       <img src="<%= current_user.facebook.get_picture(current_user.uid) %>">
       <%= user.name %>
-    </li></div>
-    <% end %>
-  </ul>
+    </div>
+  <% end %>
+</div>
+
+<h1>Users invited</h1>
+
+<div class="row">
+  <% @group.invitations do |invitation| %>
+    <div id="col span_12">
+      <%= invitation %>
+      <h1>User</h1>
+    </div>
+  <% end %>
 </div>

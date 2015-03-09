@@ -33,15 +33,15 @@ $(function() {
   };
 });
 
-    // $("#add-user").on("submit", function(e) {
-    //   e.preventDefault();
+    $("#add-user").on("submit", function(e) {
+      e.preventDefault();
 
-    //   $.ajax({
-    //     type: "post",
-    //     url: "/groups/<%= @group.id %>/invitations",
-    //     data: $(this).serialize()
-    //   })
-    // })
+      $.ajax({
+        type: "post",
+        url: "/groups/<%= @group.id %>/invitations",
+        data: $(this).serialize()
+      })
+    })
 
 $("#add-user").on("submit", function(event) {
   event.preventDefault();
