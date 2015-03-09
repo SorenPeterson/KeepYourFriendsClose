@@ -1,8 +1,8 @@
-
-
-<div id="user_login">
+<div class="row footer col span_12">
   <% unless current_user %>
-  <span id="title">Keep Your Friends Close</span></br></br>
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+    <h1>Keep Your Friends Close</h1>
+    <div class="facebook-button">
+      <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+    </div>
   <% end %>
 </div>
