@@ -51,7 +51,7 @@
 
 <h1>Users invited</h1>
 
-<div class="row">
+<div class="row" id="user-list">
   <% @group.invitations.each do |invitation| %>
     <div id="col span_12">
       <img src="<%= invitation.user.facebook.get_picture(invitation.user.uid) %>">

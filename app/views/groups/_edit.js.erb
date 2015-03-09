@@ -53,8 +53,10 @@ $("#add-user").on("submit", function(event) {
     data: $(this).serialize()
   }).done(function(response){
     console.log(response);
-    $(".user-list ul").prepend("<div id='user-name'><li>"+response.name+"</li></div>")
+    location.reload();
+    // $("#user-list").prepend('<div class="col span_12">'+response.name+'</li></div>')
   }).fail(function(response) {
     $("#error-box").show();
+    $("#error-box").text(response.responseText)
   })
 })
