@@ -33,8 +33,7 @@ function updateCurrentUser(){
     zoom: 15,
   };
 
-  var map = new google.maps.Map(document.getElementById('map-canvas'),
-    mapOptions);
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
 function pickUserIcon(){
   var firstLetter = "<%= current_user.name[0].upcase %>"
