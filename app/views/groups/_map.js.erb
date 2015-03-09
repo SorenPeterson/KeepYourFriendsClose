@@ -30,11 +30,10 @@ function updateCurrentUser(){
 
   var mapOptions = {
     center: currentlocation, // or the average of the users locations
-    zoom: 15,
+    zoom: 17,
   };
 
-  var map = new google.maps.Map(document.getElementById('map-canvas'),
-    mapOptions);
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
 function pickUserIcon(){
   var firstLetter = "<%= current_user.name[0].upcase %>"
@@ -50,6 +49,7 @@ function pickUserIcon(){
     icon: pickUserIcon()
   });
 
+
 // create markers for each user on the same map
 function updateGroupMarkers(){
   var group_id = $("#map-canvas").attr("data-group-id")
@@ -63,6 +63,7 @@ function updateGroupMarkers(){
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(response[i].latitude, response[i].longitude),
         map: map,
+        icon: "/assets/"+response[i].color+"_Marker"+response[i].name[0]+".png",
         title: response[i].name
       });
     }
@@ -77,7 +78,6 @@ function getupdatedlocation(){
       // var newlocation = new google.maps.LatLng(37.7952, 122.4028)
       if ( newlocation.k != currentlocation.k || newlocation.D != currentlocation.D) {
         marker.setPosition(newlocation);
-        map.panTo(newlocation)
         updateCurrentUser();
         currentlocation = newlocation;
       }

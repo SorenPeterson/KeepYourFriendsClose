@@ -33,6 +33,7 @@ class GroupsController < ApplicationController
   end
 
   def destroy
+    @group = Group.find(params[:id])
     @group.destroy
     redirect_to groups_path
   end
@@ -61,6 +62,15 @@ class GroupsController < ApplicationController
 
   def photos
     @group = Group.find(params[:id])
+  end
+
+  def leave
+    @group = Group.find(params[:group_id])
+    @user = User.find(params[:id])
+
+    @user.groups.delete(@group)
+
+    redirect_to groups_path
   end
 
 private

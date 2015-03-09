@@ -1,50 +1,21 @@
-<div id="row">
-  <div class="col span_3 button">
-    <p><a href="/groups/<%= @group.id %>/chat">Chat</a></p>
-  </div>
-  <div class="col span_3 button">
-    <p><a href="/groups/<%= @group.id %>/map">Map</a></p>
-  </div>
-  <div class="col span_3 button">
-    <p><a href="/groups/<%= @group.id %>/photos">Photos</a></p>
-  </div>
-  <div class="col span_3 button">
-    <p><a href="/groups/<%= @group.id %>/info">Info</a></p>
-  </div>
-</div>
+<%= render partial: "header" %>
 
-<p>
-  <button><%= link_to "Back", groups_path %></button>
-  <% if current_user.id == @group.admin.id %>
-    <button><%= link_to "Edit", edit_group_path %></button>
-  <% end %>
-</p>
+<strong><h3>Description</h3></strong>
+<p><%= @group.description %></p>
 
-<div id="map-canvas" data-group-id= "<%=@group.id%>", data-user-id= "<%=current_user.id%>">
-</div>
-
-<script>
-  <%= render "map.js" %>
-</script>
-
-<div id="chat-canvas">
-  <form id="chat-input">
-    <input type="text" name="message">
-    <input type="submit" name="send-message" value="Send">
-  </form>
-
-  <div id="chat-box">
-  </div>
-</div>
-
-<script>
-  <%= render "chat.js" %>
-</script>
-
-<ul id="user-list">
+<div class="row">
   <% @users.each do |user| %>
-    <li><%= user.name %></li>
+    <div class="col span_12">
+      <img src="<%= user.facebook.get_picture(user.uid) %>">
+      <%= user.name %>
+    </div>
   <% end %>
-</ul>
+</div>
 
+<% if current_user.id == @group.admin.id %>
+  <button><%= link_to "Edit", edit_group_path %></button>
+<% end %>
 
+<% if current_user.id != @group.admin.id %>
+  <button><a href="/groups/<%= @group.id %>/users/<%= current_user.id %>/leave">Leave Group</a></button>
+<% end %>

@@ -1,15 +1,18 @@
-<button><p><%= link_to "Back", groups_path %></button>
-<div class="invite-list">
+<div class="row col span_12">
+  <h1>Invitations</h1>
+</div>
 
+<%= render partial: "partials/navheader" %>
+
+<div class="row">
   <% @invitations.each do |invitation| %>
-    <div class="single-invite">
+    <div class="col span_12">
         <span id="invite-to"><%= link_to invitation.group.name, url_for(invitation.group) %></span></br>
-        <span id="invited-by"> Invited by: <%= invitation.group.admin.name %></span></br>
+        <span id="invited-by"> Invited by: <img src="<%= invitation.group.admin.facebook.get_picture(invitation.group.admin.uid) %>"> <%= invitation.group.admin.name %></span></br>
         <div class="accept-decline-buttons">
-          <%= button_to "Accept", group_invitation_path(invitation.group, invitation) + '/accept', method: :delete, data: { confirm: true } %>
-          <%= button_to "Decline", group_invitation_path(invitation.group, invitation) + '/decline', method: :delete, data: { confirm: true } %>
+          <%= button_to "Accept", group_invitation_path(invitation.group, invitation) + '/accept', method: :delete %>
+          <%= button_to "Decline", group_invitation_path(invitation.group, invitation) + '/decline', method: :delete %>
         </div>
     </div>
   <% end %>
-
 </div>
