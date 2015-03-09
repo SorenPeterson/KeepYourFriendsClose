@@ -60,6 +60,10 @@ class GroupsController < ApplicationController
     @users = @group.users
   end
 
+  def photos
+    @group = Group.find(params[:id])
+  end
+
 private
 
   before_filter :require_login

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :users do
     end
     resources :invitations
+    resources :photos
   end
 
   get '/groups/:id/map', to: 'groups#map'
