@@ -1,0 +1,19 @@
+<button><p><%= link_to "Back", group_path(@group) %></p></button>
+
+<div id="take-photo"><button> Take a photo </button></div>
+
+<div id="photo-stream" data-group-id= "<%=@group.id%>", data-user-id= "<%=current_user.id%>">
+
+  <%@photos.each do |photo|%>
+    <div class="photo"><img src="<%= photo.url%>"></div>
+
+  <% if photo.user_id == current_user.id%>
+    <button> Delete </button>
+  <%end%>
+  <%end%>
+</div>
+
+
+<script>
+  <%= render "photos.js" %>
+</script>
