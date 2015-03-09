@@ -3,7 +3,7 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(name: params[:name])
+    @user = User.find_by(uid: params[:uid])
     @group = Group.find(params[:group_id])
     # if @user && (@group.users.find_by(name: params[:name]) != nil || Invitation.find_by(user_id: @user.id, group_id: params[:group_id]) == nil)
     # elsif @user
