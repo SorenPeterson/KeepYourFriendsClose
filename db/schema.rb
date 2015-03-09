@@ -48,11 +48,11 @@ ActiveRecord::Schema.define(version: 20150309185759) do
     t.string   "email"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "color",            default: "blue"
+    t.string   "color"
   end
 
 end
