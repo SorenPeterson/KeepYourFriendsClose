@@ -14,3 +14,7 @@
 <% if current_user.id == @group.admin.id %>
   <button><%= link_to "Edit", edit_group_path %></button>
 <% end %>
+
+<% if current_user.id != @group.admin.id %>
+  <button><a href="/groups/<%= @group.id %>/users/<%= current_user.id %>/leave">Leave Group</a></button>
+<% end %>
