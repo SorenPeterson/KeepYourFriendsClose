@@ -2,11 +2,11 @@
 <button id="invitations-link"><p><%= link_to "Invites", invitations_path %></p></button>
 
 <div id="group-list">
-  <!-- <ul> -->
+  <ul>
     <% (@groups ||= []).each do |group| %>
-    <div class="group-name">
-    <li><%= link_to group.name, url_for(group) %></li>
-    </div>
+      <div class="group-name">
+        <li><%= link_to group.name, url_for(group) %></li>
+      </div>
     <% end %>
-  <!-- </ul> -->
+  </ul>
 </div>

@@ -14,33 +14,33 @@ $(document).ready(function(response){
   // })
 
 // slide transitions
-  $("#new-group-link").on("click", function(event){
-    var effect = 'slide';
-    var options = { direction: "left"};
-    var duration = 500;
-    $("#new-group-link").toggle(effect, options, duration);
-    $("#group-list").toggle(effect, options, duration);
-    $("#invitations-link").toggle(effect, options, duration);
-  })
+  // $("#new-group-link").on("click", function(event){
+  //   var effect = 'slide';
+  //   var options = { direction: "left"};
+  //   var duration = 500;
+  //   $("#new-group-link").toggle(effect, options, duration);
+  //   $("#group-list").toggle(effect, options, duration);
+  //   $("#invitations-link").toggle(effect, options, duration);
+  // })
 
   // create a new group
-  $(".new_group").on("submit", function(event){
-    event.preventDefault();
-    var url = $(this).attr("action")
-    var data = $("form").serialize();
-    $.ajax({
-      url: url,
-      type: "post",
-      dataType: "json",
-      data: data
-    }).done(function(response){
-      $(".new_group").replaceWith("<span id='group_header'>"+response.name+"</span>");
+  // $(".new_group").on("submit", function(event){
+  //   event.preventDefault();
+  //   var url = $(this).attr("action")
+  //   var data = $("form").serialize();
+  //   $.ajax({
+  //     url: url,
+  //     type: "post",
+  //     dataType: "json",
+  //     data: data
+  //   }).done(function(response){
+  //     $(".new_group").replaceWith("<span id='group_header'>"+response.name+"</span>");
 
-      var group_id = response.id
+  //     var group_id = response.id
 
-      show_group_edits(group_id);
-    })
-  })
+  //     show_group_edits(group_id);
+  //   })
+  // })
 
   // show options to add people to the group
   function show_group_edits(group_id){

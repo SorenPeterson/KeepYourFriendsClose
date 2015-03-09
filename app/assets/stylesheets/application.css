@@ -12,6 +12,6 @@
  *
  *= require ../../../vendor/assets/stylesheets/responsive.gs.12col.css
  *= require ../../../vendor/assets/stylesheets/normalize.css
- *= require_tree .
+ * require_tree .
  *= require_self
  */
