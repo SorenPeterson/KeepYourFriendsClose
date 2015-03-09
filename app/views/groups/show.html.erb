@@ -1,5 +1,6 @@
 <%= render partial: "header" %>
 
+<strong><h3>Description</h3></strong>
 <p><%= @group.description %></p>
 
 <div class="row">
@@ -13,4 +14,8 @@
 
 <% if current_user.id == @group.admin.id %>
   <button><%= link_to "Edit", edit_group_path %></button>
+<% end %>
+
+<% if current_user.id != @group.admin.id %>
+  <button><a href="/groups/<%= @group.id %>/users/<%= current_user.id %>/leave">Leave Group</a></button>
 <% end %>

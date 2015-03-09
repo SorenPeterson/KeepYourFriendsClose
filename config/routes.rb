@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :groups do
     resources :users do
+      member do
+        get 'leave', to: 'groups#leave'
+      end
     end
     resources :invitations
     resources :photos
