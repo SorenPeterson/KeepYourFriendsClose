@@ -46,10 +46,10 @@
 <h1>Users invited</h1>
 
 <div class="row">
-  <% @group.invitations do |invitation| %>
+  <% @group.invitations.each do |invitation| %>
     <div id="col span_12">
-      <%= invitation %>
-      <h1>User</h1>
+      <img src="<%= invitation.user.facebook.get_picture(invitation.user.uid) %>">
+      <%= invitation.user.name %>
     </div>
   <% end %>
 </div>
