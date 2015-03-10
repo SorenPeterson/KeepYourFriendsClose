@@ -39,13 +39,22 @@
   </script>
 
 <% end %>
-
-<h1>Users in group</h1>
+<h1>Group Admin </h1>
 
 <div class="row">
-  <% @users.each do |user| %>
     <div id="col span_12">
-      <img src="<%= current_user.facebook.get_picture(current_user.uid) %>">
+      <% admin = @group.admin%>
+      <img src="<%= admin.facebook.get_picture(admin.uid) %>">
+      <%= admin.name %>
+    </div>
+</div>
+
+<h1>Members</h1>
+
+<div class="row">
+  <% @group.users.each do |user| %>
+    <div id="col span_12">
+      <img src="<%= user.facebook.get_picture(user.uid) %>">
       <%= user.name %>
     </div>
   <% end %>

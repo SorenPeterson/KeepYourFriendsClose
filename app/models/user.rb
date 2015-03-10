@@ -7,8 +7,7 @@ class User < ActiveRecord::Base
   has_many :invitations
   has_many :photos
 
-  validates :phone_number, :length => { :minimum => 10, :maximum => 15 }
-
+  # validates :phone_number, :length => { :minimum => 10, :maximum => 15 }
   validate :phone_number_regex
 
   def choose_color
@@ -16,6 +15,7 @@ class User < ActiveRecord::Base
   end
 
   def phone_number_regex
+    return true unless self.phone_number
     num = self.phone_number
     num = num.gsub(/[^0-9.]/, "")
     if num.length == 10

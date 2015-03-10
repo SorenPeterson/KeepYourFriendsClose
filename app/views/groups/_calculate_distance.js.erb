@@ -21,7 +21,7 @@ $(document).ready(function(){
       var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
       var d = R * c;
       var decimal = d / 1600
-      return ("You are "+decimal.toFixed(2) + " miles away from the main landmark!");
+      return ("You are "+decimal.toFixed(2)+" miles away from the main landmark!");
     };
 
     $("#landmark").html(getDistance(user, group))
