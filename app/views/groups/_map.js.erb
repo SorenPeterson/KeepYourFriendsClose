@@ -105,7 +105,8 @@ function initialize(location) {
           position: location,
           map: map,
           title: 'Hello World!',
-          draggable: true
+          draggable: true,
+          icon: "/treasure-mark.png"
         })
       } else {
         landmarker.setPosition(location);
@@ -127,7 +128,8 @@ function initialize(location) {
           position: e.latLng,
           map: map,
           title: 'Hello World!',
-          draggable: true
+          draggable: true,
+          icon: "/treasure-mark.png"
         })
         setLandmark(e);
         google.maps.event.addListener(landmarker, 'dragend', function(e) {
