@@ -1,9 +1,11 @@
+var landmarker = null;
 
 function findme(){
   navigator.geolocation.getCurrentPosition(initialize)
 }
 
 function initialize(location) {
+
   var currentlocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude)
   updateCurrentUser();
   updateGroupMarkers();
@@ -91,7 +93,7 @@ function initialize(location) {
       type: 'get',
       dataType: "json"
     }).done(function(response) {
-      var location = new google.maps.LatLng(response.lat, response.lng);
+;        var location = new google.maps.LatLng(response.lat, response.lng);
       // landmarker = new google.maps.Marker({
       //   position: location,
       //   map: map,
@@ -108,14 +110,15 @@ function initialize(location) {
       } else {
         landmarker.setPosition(location);
       }
+      google.maps.event.addListener(landmarker, 'dragend', function(e) {
+        setLandmark(e);
+      })
     })
   }
 
   setInterval(getupdatedlocation, 3000);
   setInterval(updateGroupMarkers, 3000);
   setInterval(updateLandmark, 3000);
-
-  landmarker = null;
 
   <% if @group.admin.id == current_user.id %>
     google.maps.event.addListener(map, 'click', function(e) {
@@ -126,12 +129,23 @@ function initialize(location) {
           title: 'Hello World!',
           draggable: true
         })
-
-        google.maps.event.addListener(landmarker, 'dragend', function() {
-          console.log(landmarker.position)
+        setLandmark(e);
+        google.maps.event.addListener(landmarker, 'dragend', function(e) {
+          setLandmark(e);
         })
       }
     })
+
+    function setLandmark(e) {
+      $.ajax({
+        url: "/groups/<%= @group.id %>/landmark",
+        type: "post",
+        data: {
+          latitude: e.latLng.k,
+          longitude: e.latLng.D
+        }
+      })
+    }
   <% end %>
 }
 

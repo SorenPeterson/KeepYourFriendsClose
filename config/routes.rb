@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :groups do
     member do
-      get 'landmark', to: "groups#landmark"
+      get 'landmark', to: "groups#getlandmark"
+      post 'landmark', to: "groups#setlandmark"
     end
 
     resources :users do

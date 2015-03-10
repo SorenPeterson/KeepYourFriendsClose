@@ -73,13 +73,22 @@ class GroupsController < ApplicationController
     redirect_to groups_path
   end
 
-  def landmark
+  def getlandmark
     @group = Group.find(params[:id])
 
+    status = (@group.latitude && @group.longitude) ? 200 : 400
+
     render json: {
-      lat: @group.lattitude,
+      lat: @group.latitude,
       lng: @group.longitude
-    }
+    }, status: status
+  end
+
+  def setlandmark
+    @group = Group.find(params[:id])
+    @group.update_attributes(latitude: params[:latitude], longitude: params[:longitude])
+
+    render inline: ''
   end
 
 private
