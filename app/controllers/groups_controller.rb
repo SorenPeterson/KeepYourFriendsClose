@@ -91,6 +91,24 @@ class GroupsController < ApplicationController
     render inline: ''
   end
 
+  def text
+    account_sid = ENV["TWILIO_SID"]
+    auth_token = ENV["TWILIO_AUTH_TOKEN"]
+
+    @client = Twilio::REST::Client.new account_sid, auth_token
+
+    users = Group.find(params[:id]).users
+    users.each do |user|
+      @message = @client.account.messages.create({
+        :from => '+14158861877',
+        :to => user.phone_number,
+        :body => "#{current_user.name} needs help!"
+      })
+    end
+
+    render inline: ""
+  end
+
 private
 
   before_filter :require_login

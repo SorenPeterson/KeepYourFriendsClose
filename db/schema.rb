@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309221959) do
+ActiveRecord::Schema.define(version: 20150309232840) do
 
   create_table "groups", force: :cascade do |t|
     t.integer  "user_id"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 20150309221959) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "color"
+    t.string   "phone_number"
   end
 
 end

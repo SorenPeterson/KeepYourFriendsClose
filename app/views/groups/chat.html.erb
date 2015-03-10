@@ -1,5 +1,14 @@
 <%= render partial: "header" %>
 
+<div class="help-button">
+  <button id="help-button"> Find me! </button>
+</div>
+
+<script>
+  <%= render "text.js" %>
+</script>
+
+
 <div id="chat-canvas">
   <form id="chat-input">
     <input type="text" name="message">
