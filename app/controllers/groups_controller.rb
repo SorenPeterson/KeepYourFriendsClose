@@ -74,8 +74,23 @@ class GroupsController < ApplicationController
   end
 
 
-  def send
+  def text
+    account_sid = 'AC0a1528c367942cf07f078667583b174d'
+    auth_token = '8b4994241071f3c425655f1e3d339dec'
 
+    @client = Twilio::REST::Client.new account_sid, auth_token
+
+    users = Group.find(params[:id]).users
+    users.each do |user|
+      @message = @client.account.messages.create({
+        :from => '+14158861877',
+        :to => user.phone_number,
+        :body => "#{current_user.name} needs help!"
+      })
+      puts @message.to
+    end
+
+    render json: @message
   end
 
 private

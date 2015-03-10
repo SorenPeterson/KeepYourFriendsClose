@@ -1,0 +1,13 @@
+$("#help-button").on("click", function(event){
+  event.preventDefault();
+  $.ajax({
+    url: "/groups/1/text",
+    type: "post",
+    dataType: "json"
+  }).done(function(response){
+    console.log("success");
+    $("#help-button").replaceWith("Sent! Stay where you are.");
+  }).fail(function(){
+    alert("you failed");
+  })
+})
