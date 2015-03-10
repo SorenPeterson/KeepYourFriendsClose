@@ -14,8 +14,14 @@ Rails.application.routes.draw do
     resources :photos
   end
 
+  get '/users/:id/settings', to: 'users#settings'
+
+  get '/users/:id/enabletexting', to: 'users#enabletexting'
+  get '/users/:id/enablelocation', to: 'users#enablelocation'
+
   get '/users/:id/setupphone', to: 'users#setupphone'
   get '/users/:id/savephone', to: 'users#savephone'
+  post '/users/:id/savephone', to: 'users#savephone'
 
   get '/groups/:id/map', to: 'groups#map'
   get '/groups/:id/chat', to: 'groups#chat'
