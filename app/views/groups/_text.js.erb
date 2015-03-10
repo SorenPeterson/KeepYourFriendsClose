@@ -2,11 +2,10 @@ $("#help-button").on("click", function(event){
   event.preventDefault();
   $.ajax({
     url: "/groups/1/text",
-    type: "post",
-    dataType: "json"
+    type: "post"
   }).done(function(response){
     console.log("success");
-    $("#help-button").replaceWith("Sent! Stay where you are.");
+    $("#help-button").replaceWith("Messages Sent!");
   }).fail(function(){
     alert("you failed");
   })

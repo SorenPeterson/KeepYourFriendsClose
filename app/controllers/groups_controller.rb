@@ -87,10 +87,9 @@ class GroupsController < ApplicationController
         :to => user.phone_number,
         :body => "#{current_user.name} needs help!"
       })
-      puts @message.to
     end
 
-    render json: @message
+    render inline: ""
   end
 
 private
