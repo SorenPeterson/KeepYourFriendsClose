@@ -11,10 +11,6 @@ class User < ActiveRecord::Base
     self.color = ["blue", "brown", "darkgreen", "green", "orange", "paleblue", "pink", "purple", "red", "yellow"].sample
   end
 
-  def validate_phone_number
-    self.phone_number
-  end
-
   def self.from_omniauth(auth)
     user = User.find_or_create_by(provider: auth.provider, uid: auth.uid)
     user.name = auth.info.name
