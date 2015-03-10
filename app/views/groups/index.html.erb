@@ -1,4 +1,4 @@
-<div class="band header">
+<div class="band navigation">
   <div class="row">
     <div class="four columns">
       <div class="button button-primary button-selected">
@@ -18,10 +18,14 @@
   </div>
 </div>
 
-<div id="group-list">
+<div class="band groups">
   <% (@groups ||= []).each do |group| %>
-    <div class="row col span_12 item">
-      <a href="/groups/<%= group.id %>/map"><%= group.name %></a>
+    <div class="row">
+      <div class="twelve columns">
+        <div class="content-item">
+          <a href="/groups/<%= group.id %>/map"><%= group.name %> - <%= group.users.count %> <%= group.users.count > 1 ? 'Users' : 'User' %></a>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>

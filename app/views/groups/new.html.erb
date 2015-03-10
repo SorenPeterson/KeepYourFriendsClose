@@ -1,4 +1,4 @@
-<div class="band header">
+<div class="band navigation">
   <div class="row">
     <div class="four columns">
       <div class="button button-primary">
@@ -18,7 +18,7 @@
   </div>
 </div>
 
-<div class="new-group-form">
+<div class="ryan-soren-form">
   <p>
     <% if flash[:group_creation_errors] %>
       <%= flash[:group_creation_errors] %>
@@ -26,9 +26,9 @@
   </p>
 
   <%= form_for Group.new do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-
-    <%= f.submit %>
-<% end %>
+    <p>
+      Name: &nbsp &nbsp<%= f.text_field :name %>
+    </p>
+    <input class="doge" type="submit" name="commit" value="Create Group">
+  <% end %>
 </div>

@@ -30,13 +30,13 @@ html {
 /**
  * Remove default margin.
  */
-* {
+/** {
   outline: 1px solid black;
-}
+}*/
 
 
 body {
-  margin: 0;
+  margin: 0 5vw 0 5vw;
   background-color: #56A0D3;
 }
 
@@ -52,7 +52,6 @@ body {
 /*NAVIGATION*/
 .band.navigation{
   width: 100%;
-  height: 10em;
 }
 /*CONTENT*/
 .band.groups{
@@ -70,9 +69,8 @@ body {
 }
 
 .logo {
-  font: 50em;
   font-family: CordeliaFont;
-  font-size: 6.2em;
+  font-size: 5.5em;
   margin: 0.67em 0;
   /*font-style: */
   font-weight: bold;
@@ -81,7 +79,7 @@ body {
   text-align: center
 }
 
-.button.button-primary {
+.button {
   font-size: 2em;
 }
 
@@ -97,3 +95,87 @@ body {
 .button.button-primary.button-selected {
   background-color: red;
 }
+
+.band.navigation {
+  margin-top: -40pt;
+  margin-bottom: 20pt;
+}
+
+.content-item {
+  background-color: white;
+  width: 100%;
+  padding: 10pt;
+  text-align: center;
+  border-radius: 5pt;
+}
+
+.content-item a {
+  font-weight: bold;
+  font-size: 2em;
+  color: black;
+  text-decoration: none;
+}
+
+.ryan-soren-form {
+  background-color: white;
+  padding: 10pt;
+  text-align: center;
+}
+
+.ryan-soren-form {
+  font-size: 2em;
+  border-radius: 5pt;
+}
+
+.ryan-soren-form input[type=text] {
+  border: 1px solid #56A0D3;
+}
+
+.ryan-soren-form input[name=commit] {
+  font-size: 1em;
+  background-color: #EEE;
+  padding
+}
+
+.doge {
+  -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+  -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+  box-shadow:inset 0px 1px 0px 0px #ffffff;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf));
+  background:-moz-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+  background:-webkit-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+  background:-o-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+  background:-ms-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+  background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf',GradientType=0);
+  background-color:#ededed;
+  -moz-border-radius:8px;
+  -webkit-border-radius:8px;
+  border-radius:8px;
+  border:1px solid #dcdcdc;
+  display:inline-block;
+  cursor:pointer;
+  color:#777777;
+  font-family:helvetica;
+  font-size:18px;
+  font-weight:bold;
+  padding:8px 19px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #ffffff;
+}
+.doge:hover {
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed));
+  background:-moz-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+  background:-webkit-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+  background:-o-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+  background:-ms-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+  background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed',GradientType=0);
+  background-color:#dfdfdf;
+}
+.doge:active {
+  position:relative;
+  top:1px;
+}
+
+
