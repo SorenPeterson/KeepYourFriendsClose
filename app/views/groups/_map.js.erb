@@ -7,6 +7,7 @@ function initialize(location) {
   var currentlocation = new google.maps.LatLng(location.coords.latitude, location.coords.longitude)
   updateCurrentUser();
   updateGroupMarkers();
+  updateLandmark();
 
   // ajax call to update the current users location
   function updateCurrentUser(){
@@ -84,17 +85,40 @@ function initialize(location) {
     })
   }
 
-  setInterval(getupdatedlocation, 3000)
-  setInterval(updateGroupMarkers, 3000)
+  function updateLandmark() {
+    $.ajax({
+      url: '/groups/<%= @group.id %>/landmark',
+      type: 'get',
+      dataType: "json"
+    }).done(function(response) {
+      var location = new google.maps.LatLng(response.lat, response.lng);
+      // landmarker = new google.maps.Marker({
+      //   position: location,
+      //   map: map,
+      //   title: 'Hello World!',
+      //   draggable: true
+      // })
+      if(!landmarker) {
+        landmarker = new google.maps.Marker({
+          position: location,
+          map: map,
+          title: 'Hello World!',
+          draggable: true
+        })
+      } else {
+        landmarker.setPosition(location);
+      }
+    })
+  }
+
+  setInterval(getupdatedlocation, 3000);
+  setInterval(updateGroupMarkers, 3000);
+  setInterval(updateLandmark, 3000);
 
   landmarker = null;
 
   <% if @group.admin.id == current_user.id %>
     google.maps.event.addListener(map, 'click', function(e) {
-      console.log(e.latLng);
-      var infowindow = new google.maps.InfoWindow({
-        content: "yoyoyo"
-      });
       if(!landmarker) {
         landmarker = new google.maps.Marker({
           position: e.latLng,
@@ -107,7 +131,6 @@ function initialize(location) {
           console.log(landmarker.position)
         })
       }
-
     })
   <% end %>
 }

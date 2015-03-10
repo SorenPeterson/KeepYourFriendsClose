@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   resources :groups do
+    member do
+      get 'landmark', to: "groups#landmark"
+    end
+
     resources :users do
       member do
         get 'leave', to: 'groups#leave'

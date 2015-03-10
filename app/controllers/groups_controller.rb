@@ -73,6 +73,15 @@ class GroupsController < ApplicationController
     redirect_to groups_path
   end
 
+  def landmark
+    @group = Group.find(params[:id])
+
+    render json: {
+      lat: @group.lattitude,
+      lng: @group.longitude
+    }
+  end
+
 private
 
   before_filter :require_login
