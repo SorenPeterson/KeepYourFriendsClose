@@ -1,7 +1,7 @@
 $("#help-button").on("click", function(event){
   event.preventDefault();
   $.ajax({
-    url: "/groups/1/text",
+    url: "/groups/<%= @group.id %>/text",
     type: "post"
   }).done(function(response){
     console.log("success");
