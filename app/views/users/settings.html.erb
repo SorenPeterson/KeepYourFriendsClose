@@ -5,8 +5,9 @@
 <%= render partial: "partials/navheader" %>
 
 <div class="row col span_12">
+  <span>Phone Number: <%= @user.phone_number%> </span>
   <form action="/users/<%= @user.id %>/savephone" method="post" id="update-phone-form">
-    <label>Update your phone number:</label>
+    <label>Update Phone Number:</label>
     <input type="text" name="phone">
     <input type="submit" value="Save">
   </form>
@@ -14,22 +15,32 @@
 </div>
 
 <div>
-<%if flash[:phone_number_errors]%>
+  <span> Groups You've Created: </span>
+  <% @groups = Group.where(user_id: @user.id) %>
+  <ol>
+    <% @groups.each do |group| %>
+    <li><a href="/groups/<%=group.id%>/edit"> <%= group.name %></a></li>
+    <%end%>
+  </ol>
+</div>
+
+<div>
+  <%if flash[:phone_number_errors]%>
   <%flash[:phone_number_errors].each do |msg| %>
   <%= msg %>
-<% end %>
-<% end %>
+  <% end %>
+  <% end %>
 
 </div>
 
 <div class="row col span_12">
   <form action="/users/<%= @user.id %>/enabletexting" method="get" id="texting-form">
     <% if @user.allow_texting == true %>
-      <label>Disable Text Updates </label>
-      <input type="submit" value="Disable">
+    <label>Disable Text Updates </label>
+    <input type="submit" value="Disable">
     <% else %>
-      <label>Enable Text Updates </label>
-      <input type="submit" value="Enable">
+    <label>Enable Text Updates </label>
+    <input type="submit" value="Enable">
     <% end %>
   </form>
 </div>
