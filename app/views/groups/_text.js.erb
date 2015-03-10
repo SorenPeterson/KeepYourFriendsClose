@@ -5,7 +5,7 @@ $("#help-button").on("click", function(event){
     type: "post"
   }).done(function(response){
     console.log("success");
-    $("#help-button").replaceWith("Messages Sent!");
+    $("#help-button").replaceWith("Message Sent! Your friends are on the way");
   }).fail(function(){
     alert("you failed");
   })
