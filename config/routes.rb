@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get '/groups/:id/map', to: 'groups#map'
   get '/groups/:id/chat', to: 'groups#chat'
+  post '/groups/:id/text', to: 'groups#text'
 
   resources :invitations
   delete '/groups/:group_id/invitations/:id/accept', to: 'invitations#accept'
