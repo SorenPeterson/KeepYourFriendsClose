@@ -43,4 +43,14 @@ class UsersController < ApplicationController
     p @user.latitude
   end
 
+  def setupphone
+    @user = User.find(params[:id])
+  end
+
+  def savephone
+    @user = User.find(params[:id])
+    @user.update_attributes(phone_number: params[:phone])
+
+    redirect_to groups_path
+  end
 end

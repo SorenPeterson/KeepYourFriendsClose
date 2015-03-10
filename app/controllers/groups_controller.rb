@@ -99,11 +99,14 @@ class GroupsController < ApplicationController
 
     users = Group.find(params[:id]).users
     users.each do |user|
-      @message = @client.account.messages.create({
-        :from => '+14158861877',
-        :to => user.phone_number,
-        :body => "#{current_user.name} needs help!"
-      })
+      begin
+        @message = @client.account.messages.create({
+          :from => '+14158861877',
+          :to => user.phone_number,
+          :body => "#{current_user.name} needs help!"
+        })
+      rescue Twilio::REST::RequestError
+      end
     end
 
     render inline: ""
@@ -111,11 +114,18 @@ class GroupsController < ApplicationController
 
 private
 
+  before_filter :require_phone
   before_filter :require_login
 
   def require_login
     unless current_user
       redirect_to root_path
+    end
+  end
+
+  def require_phone
+    if current_user.phone_number == nil
+      redirect_to "/users/#{current_user.id}/setupphone"
     end
   end
 end
