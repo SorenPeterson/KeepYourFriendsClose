@@ -1,8 +1,22 @@
-<div class="row col span_12">
-  <h1>Invitations</h1>
+<div class="band header">
+  <div class="row">
+    <div class="four columns">
+      <div class="button button-primary">
+        <%= link_to "My Groups", groups_path %>
+      </div>
+    </div>
+    <div class="four columns">
+      <div class="button button-primary button-selected">
+        <%= link_to "Invites", invitations_path %>
+      </div>
+    </div>
+    <div class="four columns">
+      <div class="button button-primary">
+        <%= link_to "New Group", new_group_path %>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= render partial: "partials/navheader" %>
 
 <div class="row">
   <% @invitations.each do |invitation| %>

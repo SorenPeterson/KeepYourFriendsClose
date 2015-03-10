@@ -89,8 +89,11 @@ body {
   background-color: #c0c0c0;
 }
 
-.button.button-primary.login-button a {
+.button.button-primary a {
   color: black;
   text-decoration: none;
 }
 
+.button.button-primary.button-selected {
+  background-color: red;
+}
