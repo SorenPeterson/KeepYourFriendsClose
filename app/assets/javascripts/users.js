@@ -4,10 +4,12 @@ $("#update-phone-form").on("submit", function(event){
   $.ajax({
     url: $(this).attr("action"),
     dataType: "json",
-    type: "get",
+    type: "post",
     data: $(this).serialize()
   }).done(function(response){
-    $("#update-phone-form").append("Updated!")
+    $("#errors").html(response)
+  }).fail(function(){
+    alert("you failed")
   })
 })
 

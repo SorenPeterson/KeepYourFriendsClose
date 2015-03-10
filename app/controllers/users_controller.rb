@@ -50,12 +50,20 @@ class UsersController < ApplicationController
   def savephone
     @user = User.find(params[:id])
     @user.update_attributes(phone_number: params[:phone])
-      if request.xhr?
-        p "xhr request"
-        render json: @user
+      if @user.errors.empty?
+        if request.xhr?
+          render json: ["Updated"]
+        else
+          redirect_to groups_path
+        end
       else
-        redirect_to groups_path
-    end
+        flash[:phone_number_errors] = @user.errors.full_messages
+          if request.xhr?
+            render json: @user.errors.full_messages
+          else
+            redirect_to :back
+          end
+      end
   end
 
   def settings

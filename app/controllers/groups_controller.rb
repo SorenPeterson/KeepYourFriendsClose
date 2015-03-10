@@ -99,13 +99,15 @@ class GroupsController < ApplicationController
 
     users = Group.find(params[:id]).users
     users.each do |user|
-      begin
-        @message = @client.account.messages.create({
-          :from => '+14158861877',
-          :to => user.phone_number,
-          :body => "#{current_user.name} needs help!"
-        })
-      rescue Twilio::REST::RequestError
+      if user.allow_texting == true
+        begin
+          @message = @client.account.messages.create({
+            :from => '+14158861877',
+            :to => user.phone_number,
+            :body => "#{current_user.name} needs help!"
+          })
+        rescue Twilio::REST::RequestError
+        end
       end
     end
 

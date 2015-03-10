@@ -5,11 +5,21 @@
 <%= render partial: "partials/navheader" %>
 
 <div class="row col span_12">
-  <form action="/users/<%= @user.id %>/savephone" method="get" id="update-phone-form">
+  <form action="/users/<%= @user.id %>/savephone" method="post" id="update-phone-form">
     <label>Update your phone number:</label>
     <input type="text" name="phone">
     <input type="submit" value="Save">
   </form>
+  <div id="errors"></div>
+</div>
+
+<div>
+<%if flash[:phone_number_errors]%>
+  <%flash[:phone_number_errors].each do |msg| %>
+  <%= msg %>
+<% end %>
+<% end %>
+
 </div>
 
 <div class="row col span_12">
