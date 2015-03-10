@@ -1,0 +1,25 @@
+<div class="row col span_12">
+  <h1>Settings</h1>
+</div>
+
+<%= render partial: "partials/navheader" %>
+
+<div class="row col span_12">
+  <form action="/users/<%= @user.id %>/savephone" method="get" id="update-phone-form">
+    <label>Update your phone number:</label>
+    <input type="text" name="phone">
+    <input type="submit" value="Save">
+  </form>
+</div>
+
+<div class="row col span_12">
+  <form action="/users/<%= @user.id %>/enabletexting" method="get" id="texting-form">
+    <% if @user.allow_texting == true %>
+      <label>Disable Text Updates </label>
+      <input type="submit" value="Disable">
+    <% else %>
+      <label>Enable Text Updates </label>
+      <input type="submit" value="Enable">
+    <% end %>
+  </form>
+</div>

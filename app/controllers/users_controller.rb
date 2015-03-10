@@ -50,7 +50,36 @@ class UsersController < ApplicationController
   def savephone
     @user = User.find(params[:id])
     @user.update_attributes(phone_number: params[:phone])
-
-    redirect_to groups_path
+      if request.xhr?
+        p "xhr request"
+        render json: @user
+      else
+        redirect_to groups_path
+    end
   end
+
+  def settings
+    @user = User.find(params[:id])
+  end
+
+  def enabletexting
+    @user = User.find(params[:id])
+      if @user.allow_texting == true
+        @user.update_attributes(allow_texting: false)
+      else
+        @user.update_attributes(allow_texting: true)
+      end
+    render json: @user
+    # redirect_to :back
+  end
+
+  def enablelocation
+    @user = User.find(params[:id])
+      if @user.allow_location == true
+        @user.update_attributes(allow_location: false)
+      else
+        @user.update_attributes(allow_location: true)
+      end
+  end
+
 end
