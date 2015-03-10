@@ -47,7 +47,6 @@ body {
   width: 100%;
   padding-top: 1px;
   /*border-bottom: 10px solid #ffc63e;*/
-  margin-top: 40vh;
 }
 /*NAVIGATION*/
 .band.navigation{
@@ -93,7 +92,7 @@ body {
 }
 
 .button.button-primary.button-selected {
-  background-color: red;
+  background-color: white;
 }
 
 .band.navigation {
