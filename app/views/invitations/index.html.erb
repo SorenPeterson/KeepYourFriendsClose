@@ -14,19 +14,20 @@
 
 <div class="band groups">
   <% @invitations.each do |invitation| %>
-    <div class="row invitation">
+    <div class="row content-item">
       <div class="four columns">
         <h1 class="group-name"><%= invitation.group.name %></h1>
       </div>
       <div class="four columns">
-        <div class="invited-by">Invited by: <img src="<%= invitation.group.admin.facebook.get_picture(invitation.group.admin.uid) %>"> <%= invitation.group.admin.name %>
-        </div>
+        Invited by: <%= invitation.group.admin.name %>
+        <br>
+        <img src="<%= invitation.group.admin.facebook.get_picture(invitation.group.admin.uid) %>">
       </div>
       <div class="two columns">
-        <%= button_to "Accept", group_invitation_path(invitation.group, invitation) + '/accept', method: :delete, class: 'doge inline' %>
+        <%= button_to "Accept", group_invitation_path(invitation.group, invitation) + '/accept', method: :delete, class: 'doge accept-button accept-button' %>
       </div>
       <div class="two columns">
-        <%= button_to "Decline", group_invitation_path(invitation.group, invitation) + '/decline', method: :delete, class: 'doge inline' %>
+        <%= button_to "Decline", group_invitation_path(invitation.group, invitation) + '/decline', method: :delete, class: 'doge  accept-button' %>
       </div>
     </div>
   <% end %>
