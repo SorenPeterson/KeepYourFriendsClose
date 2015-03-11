@@ -23,10 +23,12 @@ $("#texting-form").on("submit", function(event){
     }).done(function(response){
     console.log("success");
     if (response.allow_texting == true) {
-    $("#texting-form input[type=submit]").val("Disable")
-  } else {
-    $("#texting-form input[type=submit]").val("Enable")
-  }
+      $("#texting-form input[type=submit]").val("Disable")
+      $("#enabled-tag").val("Disable")
+    } else {
+      $("#texting-form input[type=submit]").val("Enable")
+      $("#enabled-tag").val("Enable")
+    }
   })
 })
 
