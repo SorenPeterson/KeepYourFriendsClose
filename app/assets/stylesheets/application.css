@@ -252,3 +252,7 @@ body {
   margin-top: -40pt;
   font-size: 2em;
 }
+
+#map-canvas {
+  height: 83vh;
+}
