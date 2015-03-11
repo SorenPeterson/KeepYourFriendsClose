@@ -22,7 +22,11 @@
     <div class="band header">
       <div class="row">
         <div class="one columns">
-          <button><%= link_to "<-" , groups_path %></button>
+          <div class="doge home-button">
+            <a href="<%= groups_path %>">
+              <img src="/icons/home.png">
+            </a>
+          </div>
         </div>
 
         <div class="ten columns">
@@ -32,8 +36,11 @@
         </div>
 
         <div class="one columns">
-          Signed in as <strong><%= current_user.name %></strong>!
-          <%= link_to "Sign out", signout_path, id: "sign_out" %>
+          <div class="doge home-button logout-button">
+            <a href="<%= signout_path %>">
+              <img src="/icons/logout.png">
+            </a>
+          </div>
         </div>
       </div>
     </div>

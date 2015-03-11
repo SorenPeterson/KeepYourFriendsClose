@@ -96,7 +96,7 @@ body {
 }
 
 .band.navigation {
-  margin-top: -40pt;
+  margin-top: 30pt;
   margin-bottom: 20pt;
 }
 
@@ -199,9 +199,15 @@ body {
 .doge.inline {
 }
 
-body {
-  padding-top: 40vh;
-  background-width: 100%;
-  background-image: url("/images/background.jpg");
+.home-button {
+  margin-top: 2pt;
+  padding: 2pt 4pt;
 }
 
+.home-button img {
+  width: 50pt;
+}
+
+.logout-button {
+  margin-left: -30pt;
+}
