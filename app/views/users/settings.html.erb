@@ -61,10 +61,10 @@
 <div class="row col span_12">
   <form class="ryan-soren-form" action="/users/<%= @user.id %>/enabletexting" method="get" id="texting-form">
     <% if @user.allow_texting == true %>
-    <label><span id="enabled-tag">Disable</span> Text Updates </label>
+    <label>Text Updates </label>
     <input type="submit" value="Disable">
     <% else %>
-    <label><span id="enabled-tag">Enable</span> Text Updates </label>
+    <label>Text Updates </label>
     <input type="submit" value="Enable">
     <% end %>
   </form>
