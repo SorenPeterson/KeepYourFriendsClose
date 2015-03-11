@@ -24,10 +24,10 @@ $("#texting-form").on("submit", function(event){
     console.log("success");
     if (response.allow_texting == true) {
       $("#texting-form input[type=submit]").val("Disable")
-      $("#enabled-tag").val("Disable")
+      $("#enabled-tag").html("Disable")
     } else {
       $("#texting-form input[type=submit]").val("Enable")
-      $("#enabled-tag").val("Enable")
+      $("#enabled-tag").html("Enable")
     }
   })
 })
