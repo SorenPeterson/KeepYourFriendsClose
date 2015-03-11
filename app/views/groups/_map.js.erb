@@ -42,7 +42,7 @@ function initialize(location) {
     var firstLetter = "<%= current_user.name[0].upcase %>"
     var colors = ["blue", "brown", "darkgreen", "green", "orange", "paleblue", "pink", "purple", "red", "yellow"]
     var randomColor = colors[Math.floor(Math.random()*colors.length)];
-    var image = "/assets/"+randomColor+"_Marker"+firstLetter+".png"
+    var image = "/"+randomColor+"_Marker"+firstLetter+".png"
     return image;
   }
 
@@ -66,7 +66,7 @@ function initialize(location) {
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(response[i].latitude, response[i].longitude),
           map: map,
-          icon: "/assets/"+response[i].color+"_Marker"+response[i].name[0]+".png",
+          icon: "/"+response[i].color+"_Marker"+response[i].name[0]+".png",
           title: response[i].name
         });
       }
