@@ -15,21 +15,39 @@
   </div>
 </div>
 
-<strong><h3>Description</h3></strong>
-<p><%= @group.description %></p>
+<% if @group.description %>
+  <strong><h3>Description</h3></strong>
+  <p><%= @group.description %></p>
+  <hr>
+<% end %>
 
-<div class="row">
-  <% @users.each do |user| %>
-    <div class="col span_12">
-      <img src="<%= user.facebook.get_picture(user.uid) %>">
-      <%= user.name %>
+<div class="band">
+  <div class="row">
+    <div class="ten columns">
+      <h1>Users</h1>
     </div>
-  <% end %>
+
+    <% if current_user.id == @group.admin.id %>
+      <div class="two columns">
+        <button class="doge"><%= link_to "Edit", edit_group_path %></button>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-<% if current_user.id == @group.admin.id %>
-  <button><%= link_to "Edit", edit_group_path %></button>
-<% end %>
+<div class="band">
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="six columns content-item">
+        <div class="user-image">
+          <img src="<%= user.facebook.get_picture(user.uid) %>">
+        </div>
+        <div class="name-tag"><%= user.name %></div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 
 <% if current_user.id != @group.admin.id %>
   <button><a href="/groups/<%= @group.id %>/users/<%= current_user.id %>/leave">Leave Group</a></button>
