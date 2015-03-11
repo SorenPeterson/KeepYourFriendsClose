@@ -67,6 +67,9 @@ body {
   padding-bottom: 5px;
 }
 
+.bigdesc {
+  font-size: 6em;
+}
 .logo {
   font-family: CordeliaFont;
   font-size: 4.2em;
@@ -257,4 +260,5 @@ body {
 #map-canvas {
   height: 83vh;
 }
+
 
