@@ -15,24 +15,36 @@
   </div>
 </div>
 
-<div class="row col span_12">
-  <span>Phone Number: <%= @user.phone_number%> </span>
-  <form action="/users/<%= @user.id %>/savephone" method="post" id="update-phone-form">
-    <label>Update Phone Number:</label>
-    <input type="text" name="phone">
-    <input type="submit" value="Save">
-  </form>
-  <div id="errors"></div>
+<div class="band">
+  <div class="row">
+    <div class="twelve columns">
+      <form class="ryan-soren-form" action="/users/<%= @user.id %>/savephone" method="post" id="update-phone-form">
+        <% if @user.phone_number != '' %>
+          <span>Phone Number: <%= @user.phone_number%> </span>
+        <% end %>
+
+        <label>Update Phone Number:</label>
+        <input type="text" name="phone">
+        <input type="submit" value="Save">
+      </form>
+      <div id="errors"></div>
+    </div>
+  </div>
 </div>
 
-<div>
-  <span> Groups You've Created: </span>
-  <% @groups = Group.where(user_id: @user.id) %>
-  <ol>
+<hr>
+
+<div class="band">
+  <div class="row">
+    <p> Groups You've Created: </p>
+    <% @groups = Group.where(user_id: @user.id) %>
+
     <% @groups.each do |group| %>
-    <li><a href="/groups/<%=group.id%>/edit"> <%= group.name %></a></li>
+      <div class="six columns content-item">
+        <a href="/groups/<%=group.id%>/edit"><%= group.name %></a>
+      </div>
     <%end%>
-  </ol>
+  </div>
 </div>
 
 <div>
@@ -44,8 +56,10 @@
 
 </div>
 
+<hr>
+
 <div class="row col span_12">
-  <form action="/users/<%= @user.id %>/enabletexting" method="get" id="texting-form">
+  <form class="ryan-soren-form" action="/users/<%= @user.id %>/enabletexting" method="get" id="texting-form">
     <% if @user.allow_texting == true %>
     <label>Disable Text Updates </label>
     <input type="submit" value="Disable">
