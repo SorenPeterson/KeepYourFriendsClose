@@ -30,9 +30,9 @@ html {
 /**
  * Remove default margin.
  */
-* {
+/** {
   outline: 1px solid black;
-}
+}*/
 
 
 body {
@@ -69,11 +69,11 @@ body {
 
 .logo {
   font-family: CordeliaFont;
-  font-size: 5.5em;
-  margin: 0.67em 0;
+  font-size: 4.2em;
   /*font-style: */
   font-weight: bold;
 }
+
 .four.columns{
   text-align: center;
 }
@@ -152,6 +152,10 @@ body {
   padding
 }
 
+.band.header {
+  margin-top: 20pt;
+}
+
 .doge {
   -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
   -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -195,4 +199,9 @@ body {
 .doge.inline {
 }
 
+body {
+  padding-top: 40vh;
+  background-width: 100%;
+  background-image: url("/images/background.jpg");
+}
 
