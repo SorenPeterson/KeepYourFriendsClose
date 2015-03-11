@@ -211,3 +211,8 @@ body {
 .logout-button {
   margin-left: -30pt;
 }
+
+.logout-button img {
+  margin-top: 4pt;
+  margin-bottom: -2pt;
+}
