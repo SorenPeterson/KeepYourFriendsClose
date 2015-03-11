@@ -231,3 +231,14 @@ body {
   border-radius: 5pt;
   padding: 10pt;
 }
+
+#photo-stream {
+  margin-top: 20pt;
+  border-radius: 5pt;
+  padding: 5pt;
+  background-color: white;
+}
+
+.photo img {
+  width: 100%;
+}

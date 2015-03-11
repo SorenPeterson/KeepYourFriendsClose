@@ -15,7 +15,9 @@
   </div>
 </div>
 
-<div id="take-photo"><button> Take a photo </button></div>
+<div id="take-photo" class="doge">
+  Take a photo
+</div>
 
 <div id="photo-stream" data-group-id= "<%=@group.id%>", data-user-id= "<%=current_user.id%>">
 
@@ -24,7 +26,7 @@
       <img src="<%= photo.url%>">
 
       <% if photo.user_id == current_user.id || @group.admin.id == current_user.id %>
-        <button><%= link_to "Delete", group_photo_path(@group, photo), method: :delete %></button>
+      <%= button_to "Delete", group_photo_path(@group, photo), method: :delete, class: 'doge' %>
       <%end%>
     </div>
 
