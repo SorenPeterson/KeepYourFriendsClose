@@ -220,3 +220,14 @@ body {
 .content-item .accept-button {
   margin-top: 15pt;
 }
+
+#help-button img {
+  width: 5em;
+}
+
+#chat-box {
+  background-color: white;
+  margin-top: 20pt;
+  border-radius: 5pt;
+  padding: 10pt;
+}

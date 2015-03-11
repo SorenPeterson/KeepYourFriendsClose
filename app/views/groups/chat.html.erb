@@ -15,24 +15,35 @@
   </div>
 </div>
 
-<div class="help-button">
-  <button id="help-button"> Find me! </button>
+<div class="band">
+  <div class="row">
+    <div class="eight columns">
+      <form class="ryan-soren-form" id="chat-input">
+        <input type="text" name="message">
+        <input type="submit" name="send-message" value="Send">
+      </form>
+    </div>
+    <div class="two columns">
+      <br>
+    </div>
+    <div class="two columns">
+      <div id="help-button">
+        <p>Panic Zone!</p>
+        <img src="/icons/panicbutton.png">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="twelve columns">
+      <div id="chat-box">
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
   <%= render "text.js" %>
 </script>
-
-
-<div id="chat-canvas">
-  <form id="chat-input">
-    <input type="text" name="message">
-    <input type="submit" name="send-message" value="Send">
-  </form>
-
-  <div id="chat-box">
-  </div>
-</div>
 
 <script>
   <%= render "chat.js" %>
