@@ -74,7 +74,7 @@
     <% @group.invitations.each do |invitation| %>
       <div class="six columns content-item">
         <img src="<%= invitation.user.facebook.get_picture(invitation.user.uid) %>">
-        <%= invitation.user.name %>
+        <div class="name-tag"><%= invitation.user.name %></div>
       </div>
     <% end %>
   </div>
