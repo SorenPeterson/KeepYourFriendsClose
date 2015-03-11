@@ -30,9 +30,9 @@ html {
 /**
  * Remove default margin.
  */
-/** {
+* {
   outline: 1px solid black;
-}*/
+}
 
 
 body {
@@ -75,7 +75,7 @@ body {
   font-weight: bold;
 }
 .four.columns{
-  text-align: center
+  text-align: center;
 }
 
 .button {
@@ -102,10 +102,11 @@ body {
 
 .content-item {
   background-color: white;
-  width: 100%;
+  max-width: 100%;
   padding: 10pt;
   text-align: center;
   border-radius: 5pt;
+  margin: 5pt;
 }
 
 .content-item a {
@@ -113,6 +114,21 @@ body {
   font-size: 2em;
   color: black;
   text-decoration: none;
+}
+
+.invitation {
+  background-color: white;
+  padding: 10pt;
+}
+
+.invitation .two.columns {
+  text-align: center;
+}
+
+.invitation .group-name {
+  color: black;
+  text-decoration: none;
+  margin: 0;
 }
 
 .ryan-soren-form {
@@ -175,6 +191,8 @@ body {
 .doge:active {
   position:relative;
   top:1px;
+}
+.doge.inline {
 }
 
 
