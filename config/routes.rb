@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     member do
       get 'landmark', to: "groups#getlandmark"
       post 'landmark', to: "groups#setlandmark"
+      get 'distance', to: "groups#distance"
     end
 
     resources :users do
