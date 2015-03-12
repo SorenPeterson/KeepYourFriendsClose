@@ -114,6 +114,14 @@ class GroupsController < ApplicationController
     render inline: ""
   end
 
+  def distance
+    @group = Group.find(params[:id])
+    render json: {
+      group: @group,
+      user: current_user
+    }
+  end
+
 private
 
   before_filter :require_phone

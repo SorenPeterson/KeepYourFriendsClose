@@ -4,9 +4,11 @@
 
 $(document).ready(function(){
 
-  var calculateDistace = function(){
-    var user = <%= current_user.to_json.html_safe %>
-    var group = <%= @group.to_json.html_safe %>
+  var calculateDistance = function(user, group){
+    console.log("Calculating distance...");
+
+    // var user = <%= current_user.to_json.html_safe %>
+    // var group = <%= @group.to_json.html_safe %>
 
     var rad = function(x) {
       return x * Math.PI / 180;
@@ -24,10 +26,19 @@ $(document).ready(function(){
       return ("You are "+decimal.toFixed(2)+" miles away from the main landmark!");
     };
 
+    console.log(getDistance(user, group))
+
     $("#landmark").html(getDistance(user, group))
   }
 
-  setInterval(calculateDistace, 3000);
+  setInterval(function() {
+    $.ajax({
+      url: '/groups/<%= @group.id %>/distance',
+      type: 'get'
+    }).done(function(response) {
+      calculateDistance(response.user, response.group);
+    });
+  }, 3000);
 
 })
 
