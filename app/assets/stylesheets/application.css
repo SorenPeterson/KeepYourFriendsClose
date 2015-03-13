@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: CordeliaFont;
-  src: url('HunDIN1451.ttf');
+  src: url('/HunDIN1451.ttf');
 }
 
 html {
@@ -255,5 +255,9 @@ body {
 }
 
 #map-canvas {
-  height: 83vh;
+  height: 82vh;
+}
+
+#landmark {
+  font-size: 2.25em;
 }
