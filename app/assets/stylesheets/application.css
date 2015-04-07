@@ -258,4 +258,14 @@ body {
   height: 83vh;
 }
 
+#chat-box p {
+  font-size: 2em;
+}
 
+#landmark {
+  font-size: 2em;
+}
+
+.help-message p {
+  font-size: 2em;
+}
